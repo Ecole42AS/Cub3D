@@ -1,8 +1,8 @@
 #ifndef CUB3D_H
 # define CUB3D_H
 
-#define DISPLAY_WIDTH 1920
-#define DISPLAY_HEIGHT 1080
+#define DISPLAY_WIDTH 800
+#define DISPLAY_HEIGHT 600
 
 #include "../libft/libft.h"
 #include <unistd.h>
@@ -11,13 +11,17 @@
 #include <errno.h>
 #include "mlx.h"
 
-typedef struct s_mlx
+typedef struct s_mlx_data
 {
     void	*mlx;
     void	*mlx_win;
-    void	*mlx_img;
-    char	*mlx_data;
-}			t_mlx;
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		line_length;
+	int		endian;
+}			t_mlx_data;
+
 
 typedef struct s_vector
 {
@@ -44,5 +48,6 @@ typedef struct s_parsing
 }			t_parsing;
 
 char	*gnl_unempty(int fd);
+int		open_file(char *file);
 
 #endif

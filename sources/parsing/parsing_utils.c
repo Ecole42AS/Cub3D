@@ -6,12 +6,13 @@
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 09:16:20 by astutz            #+#    #+#             */
-/*   Updated: 2023/11/03 09:22:55 by astutz           ###   ########.fr       */
+/*   Updated: 2023/11/04 08:07:23 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
+/*Get next unempty line of fd*/
 char *gnl_unempty(int fd)
 {
 	char	*line;
@@ -23,6 +24,16 @@ char *gnl_unempty(int fd)
 		line = get_next_line(fd);
 	}
 	return (line);
+}
+
+/*Return fd, -1 if open failed*/
+int	open_file(char *file)
+{
+	int fd = open(file, O_RDONLY);
+
+	if (fd == -1)
+		ft_putstr_fd(strerror(errno), 2);
+	return (fd);
 }
 
 // int	parser(char *file)
