@@ -11,10 +11,13 @@
 #include <errno.h>
 #include "mlx.h"
 
+#include "structures.h"
+#include "mlx_utils.h"
+
 typedef struct s_mlx_data
 {
-    void	*mlx;
-    void	*mlx_win;
+	void	*mlx;
+	void	*mlx_win;
 	void	*img;
 	char	*addr;
 	int		bpp;

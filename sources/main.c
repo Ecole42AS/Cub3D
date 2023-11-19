@@ -3,90 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 09:15:29 by astutz            #+#    #+#             */
-/*   Updated: 2023/11/04 09:11:48 by astutz           ###   ########.fr       */
+/*   Updated: 2023/11/19 17:07:39 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#define WIN_NAME	"TEST"
+#define WIN_WIDTH	800
+#define WIN_HEIGHT	640
+#define IMG_HEIGTH	320
+#define	IMG_WIDTH	320
+
 #include "../includes/cub3d.h"
 
-void	my_mlx_pixel_put(t_mlx_data *mlx, int x, int y, int color)
+int	main(void)
 {
-	char	*dst;
+	void	*mlx;
+	void	*win;
+	t_image	*img;
+	int		x;
+	int		y;
 
-	dst = mlx->addr + (y * mlx->line_length + x * (mlx->bpp / 8));
-	*(unsigned int*)dst = color;
+	mlx = mlx_init();
+	win = mlx_new_window(mlx, WIN_WIDTH, WIN_HEIGHT, WIN_NAME);
+	img = img_create(mlx, WIN_WIDTH, WIN_HEIGHT);
+	y = 0;
+	x = 0;
+	while (y < img->height)
+	{
+		x = 0;
+		while (x < img->width)
+		{
+			put_pixel(img, x, y, 0x00FF00);
+			++x;
+		}
+		++y;
+	}
+	mlx_put_image_to_window(mlx, win, img->data, 0, 0);
+	mlx_loop(mlx);
+	return (0);
 }
-
-int main(int ac, char **av)
-{
-	(void)ac;
-	(void)av;
-	t_mlx_data	*mlx;
-	t_vector	*vector;
-	int			color;
-	
-	mlx = ft_malloc_failed_msg(1, sizeof(t_mlx_data));
-	vector = ft_malloc_failed_msg(1, sizeof(t_vector));
-	color =	0x00FF0000;
-	vector->x = 5; // a initialiser 
-	vector->y = 5;
-	mlx->mlx = mlx_init();
-	mlx->mlx_win = mlx_new_window(mlx->mlx, DISPLAY_WIDTH, DISPLAY_HEIGHT, "Cub3D");
-	mlx->img = mlx_new_image(mlx->mlx, DISPLAY_WIDTH, DISPLAY_HEIGHT);
-	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bpp, &mlx->line_length, &mlx->endian);
-	my_mlx_pixel_put(mlx, vector->x, vector->y, color);
-	mlx_put_image_to_window(mlx, mlx->mlx_win, mlx->img, 0, 0);
-	mlx_loop(mlx->mlx);
-    
-	// int fd = open("/Users/astutz/42cursus/cub3D/test.txt", O_RDONLY);
-
-	// if (fd == -1)
-	// {
-	// 	ft_putstr_fd(strerror(errno), 2);
-	// 	return(1);
-	// }
-
-    // char *line;
-    // while ((line = gnl_unempty(fd)) != NULL)
-	// {
-	// 	if (line[strlen(line) - 1] == '\n')
-    //         line[strlen(line) - 1] = '\0';
-    //     printf("Ligne non vide : %s\n", line);
-    //     free(line);
-    // }
-
-    // close(fd);
-
-//     return 0;
-}
-
-
-// #include "../includes/cub3d.h"
-
-// int main(int ac, char **av)
-// {
-//     (void)ac;
-//     (void)av;
-
-//     t_mlx_data mlx; // Créez une instance de la structure t_mlx_data
-//     t_vector vector; // Créez une instance de la structure t_vector
-
-//     int color = 0x00FF0000;
-//     vector.x = 5; // Initialisez les membres de la structure
-//     vector.y = 5;
-
-//     mlx.mlx = mlx_init();
-//     mlx.mlx_win = mlx_new_window(mlx.mlx, DISPLAY_WIDTH, DISPLAY_HEIGHT, "Cub3D");
-//     mlx.img = mlx_new_image(mlx.mlx, DISPLAY_WIDTH, DISPLAY_HEIGHT);
-//     mlx.addr = mlx_get_data_addr(mlx.img, &mlx.bpp, &mlx.line_length, &mlx.endian);
-
-//     my_mlx_pixel_put(&mlx, vector.x, vector.y, color); // Passez un pointeur vers la structure mlx
-
-//     mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, mlx.img, 0, 0);
-//     mlx_loop(mlx.mlx);
-
-//     return 0;
-// }
