@@ -1,6 +1,10 @@
 SRCS	=	sources/parsing/parsing_utils.c 	\
 			sources/parsing/textures.c 			\
 			sources/main.c						\
+			sources/mlx_utils/put_pixel.c		\
+			sources/mlx_utils/get_pixel.c		\
+			sources/mlx_utils/put_img_to_img.c	\
+			sources/mlx_utils/img_create.c		\
 			sources/init.c
 
 NAME	=	cub3D
@@ -11,7 +15,7 @@ CC		=	gcc
 
 RM      =	rm -f
 
-CFLAGS	=	-Wall -Wextra -Werror -g3 -w -fsanitize=address
+CFLAGS	=	-Wall -Wextra -Werror -g -fsanitize=address
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
