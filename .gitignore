@@ -1,0 +1,6 @@
+*.0
+*.tmp
+*.a
+*.out
+.vscode/
+cub3D
