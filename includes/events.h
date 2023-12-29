@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 20:47:37 by lray              #+#    #+#             */
-/*   Updated: 2023/12/29 23:36:35 by lray             ###   ########.fr       */
+/*   Updated: 2023/12/30 00:46:06 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,6 @@ enum e_key
 #endif
 
 int	key_handler(int keycode, void *param);
-int	close_handler(int keycode, void *param);
+int	close_handler(t_ctx *ctx);
 
 #endif

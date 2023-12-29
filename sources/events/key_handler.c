@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 20:49:26 by lray              #+#    #+#             */
-/*   Updated: 2023/12/29 23:35:27 by lray             ###   ########.fr       */
+/*   Updated: 2023/12/30 00:15:21 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	key_handler(int keycode, void *param)
 {
-	t_vars *vars = param;
+	t_ctx *ctx = param;
 
 	if (keycode == KEY_ESC)
 	{
-		mlx_destroy_window(vars->mlx, vars->win);
+		ctx_free(ctx);
 		exit (0);
 	}
 	else if (keycode == KEY_W)
