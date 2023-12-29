@@ -7,6 +7,8 @@ SRCS	=	sources/parsing/parsing_utils.c 	\
 			sources/mlx_utils/img_create.c		\
 			sources/colors/clr_make_trgb.c		\
 			sources/colors/clr_get.c			\
+			sources/events/key_handler.c		\
+			sources/events/close_handler.c		\
 			sources/init.c
 
 NAME	=	cub3D
