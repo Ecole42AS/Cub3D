@@ -13,6 +13,7 @@
 
 #include "structures.h"
 #include "mlx_utils.h"
+#include "colors.h"
 
 typedef struct s_mlx_data
 {
