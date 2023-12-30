@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 09:15:29 by astutz            #+#    #+#             */
-/*   Updated: 2023/12/30 02:14:53 by lray             ###   ########.fr       */
+/*   Updated: 2023/12/30 04:59:48 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@
 
 #include "../includes/cub3d.h"
 
+//!!DEBUG!!
+#include <time.h>
+
 /*
 	TODO:
 		- win_show
@@ -27,6 +30,9 @@
 int	main(void)
 {
 	t_ctx ctx;
+
+	//!!DEBUG!!
+	srand(time(NULL));
 
 	ctx_init(&ctx, WIN_WIDTH, WIN_HEIGHT, WIN_NAME);
 	mlx_hook(ctx.win.win, ON_DESTROY, 0, close_handler, &ctx);
