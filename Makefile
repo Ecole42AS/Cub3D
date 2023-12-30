@@ -10,6 +10,7 @@ SRCS	=	sources/parsing/parsing_utils.c 	\
 			sources/events/key_handler.c		\
 			sources/events/close_handler.c		\
 			sources/ctx/ctx_init.c				\
+			sources/ctx/ctx_show.c				\
 			sources/ctx/ctx_free.c				\
 			sources/init.c
 
