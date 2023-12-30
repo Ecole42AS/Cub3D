@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 23:51:50 by lray              #+#    #+#             */
-/*   Updated: 2023/12/30 00:55:14 by lray             ###   ########.fr       */
+/*   Updated: 2023/12/30 02:10:25 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 
 void	ctx_init(t_ctx *ctx, int width, int height, char *name)
 {
+	t_win_params params;
+
 	ctx->mlx = mlx_init();
-	ctx->win = mlx_new_window(ctx->mlx, width, height, name);
+	params.mlx = ctx->mlx;
+	params.width = width;
+	params.height = height;
+	params.name = name;
+	win_init(&ctx->win, params);
 }
