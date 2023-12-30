@@ -12,6 +12,7 @@ SRCS	=	sources/parsing/parsing_utils.c 	\
 			sources/ctx/ctx_init.c				\
 			sources/ctx/ctx_show.c				\
 			sources/ctx/ctx_free.c				\
+			sources/gameloop/gameloop.c			\
 			sources/init.c
 
 NAME	=	cub3D

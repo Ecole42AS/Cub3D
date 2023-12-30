@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 09:15:29 by astutz            #+#    #+#             */
-/*   Updated: 2023/12/30 00:59:07 by lray             ###   ########.fr       */
+/*   Updated: 2023/12/30 01:00:50 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	main(void)
 	ctx_init(&ctx, WIN_WIDTH, WIN_HEIGHT, WIN_NAME);
 	mlx_hook(ctx.win, ON_DESTROY, 0, close_handler, &ctx);
 	mlx_key_hook(ctx.win, key_handler, &ctx);
+	mlx_loop_hook(ctx.mlx, gameloop, &ctx);
 	mlx_loop(ctx.mlx);
 	ctx_free(&ctx);
 	return (0);
