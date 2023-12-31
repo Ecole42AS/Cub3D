@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_handler.c                                    :+:      :+:    :+:   */
+/*   win.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/29 23:23:05 by lray              #+#    #+#             */
-/*   Updated: 2023/12/30 00:42:58 by lray             ###   ########.fr       */
+/*   Created: 2023/12/30 01:36:41 by lray              #+#    #+#             */
+/*   Updated: 2023/12/30 02:04:53 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#ifndef WIN_H
+# define WIN_H
 
-int	close_handler(t_ctx *ctx)
-{
-	ctx_free(ctx);
-	return (1);
-}
+# include "structures.h"
+
+void	win_init(t_win *win, t_win_params params);
+void	win_free(t_win *win);
+
+#endif

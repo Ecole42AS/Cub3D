@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 09:15:29 by astutz            #+#    #+#             */
-/*   Updated: 2023/12/29 23:40:36 by lray             ###   ########.fr       */
+/*   Updated: 2023/12/30 04:59:48 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,27 @@
 
 #include "../includes/cub3d.h"
 
+//!!DEBUG!!
+#include <time.h>
+
+/*
+	TODO:
+		- win_show
+		- Ajouter win_show() a ctx_show()
+*/
+
 int	main(void)
 {
-	t_vars vars;
+	t_ctx ctx;
 
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, WIN_WIDTH, WIN_HEIGHT, WIN_NAME);
+	//!!DEBUG!!
+	srand(time(NULL));
 
-	mlx_key_hook(vars.win, key_handler, &vars);
-	mlx_hook(vars.win, ON_DESTROY, 0, close_handler, &vars);
-	mlx_loop(vars.mlx);
+	ctx_init(&ctx, WIN_WIDTH, WIN_HEIGHT, WIN_NAME);
+	mlx_hook(ctx.win.win, ON_DESTROY, 0, close_handler, &ctx);
+	mlx_key_hook(ctx.win.win, key_handler, &ctx);
+	mlx_loop_hook(ctx.mlx, gameloop, &ctx);
+	mlx_loop(ctx.mlx);
+	ctx_free(&ctx);
 	return (0);
 }

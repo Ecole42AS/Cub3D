@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_handler.c                                    :+:      :+:    :+:   */
+/*   ctx_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/29 23:23:05 by lray              #+#    #+#             */
-/*   Updated: 2023/12/30 00:42:58 by lray             ###   ########.fr       */
+/*   Created: 2023/12/29 23:51:50 by lray              #+#    #+#             */
+/*   Updated: 2023/12/30 02:10:25 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	close_handler(t_ctx *ctx)
+void	ctx_init(t_ctx *ctx, int width, int height, char *name)
 {
-	ctx_free(ctx);
-	return (1);
+	t_win_params params;
+
+	ctx->mlx = mlx_init();
+	params.mlx = ctx->mlx;
+	params.width = width;
+	params.height = height;
+	params.name = name;
+	win_init(&ctx->win, params);
 }
