@@ -1,32 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_keycode.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/31 09:15:29 by astutz            #+#    #+#             */
-/*   Updated: 2023/12/31 16:25:20 by astutz           ###   ########.fr       */
+/*   Created: 2023/12/31 12:52:09 by astutz            #+#    #+#             */
+/*   Updated: 2023/12/31 16:23:46 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define WIN_NAME	"Proto"
-#define WIN_WIDTH	800
-#define WIN_HEIGHT	640
-#define IMG_HEIGTH	320
-#define	IMG_WIDTH	320
+#include "../../minilibx/linux/mlx.h"
+#include <stdio.h>
 
-#include "../includes/cub3d.h"
-
-int	main(void)
+int key_hook(int keycode, void *param)
 {
-	t_vars vars;
-
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, WIN_WIDTH, WIN_HEIGHT, WIN_NAME);
-
-	mlx_key_hook(vars.win, key_handler, &vars);
-	mlx_hook(vars.win, ON_DESTROY, 0, close_handler, &vars);
-	mlx_loop(vars.mlx);
-	return (0);
+    (void)param;
+    printf("Key pressed: %d\n", keycode);
+    return (0);
 }
+
+// int main(void)
+// {
+//     void *mlx;
+//     void *win;
+
+//     mlx = mlx_init();
+//     win = mlx_new_window(mlx, 500, 500, "Keycode Display");
+
+//     mlx_key_hook(win, key_hook, NULL);
+//     mlx_loop(mlx);
+
+//     return (0);
+// }

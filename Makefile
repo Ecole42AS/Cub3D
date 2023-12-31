@@ -5,6 +5,7 @@ SRCS	=	sources/parsing/parsing_utils.c 	\
 			sources/mlx_utils/get_pixel.c		\
 			sources/mlx_utils/put_img_to_img.c	\
 			sources/mlx_utils/img_create.c		\
+			sources/mlx_utils/get_keycode.c 	\
 			sources/colors/clr_make_trgb.c		\
 			sources/colors/clr_get.c			\
 			sources/events/key_handler.c		\
