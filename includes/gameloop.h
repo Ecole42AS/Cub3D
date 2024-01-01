@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_handler.c                                    :+:      :+:    :+:   */
+/*   gameloop.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/29 23:23:05 by lray              #+#    #+#             */
-/*   Updated: 2023/12/30 00:42:58 by lray             ###   ########.fr       */
+/*   Created: 2023/12/30 01:09:00 by lray              #+#    #+#             */
+/*   Updated: 2023/12/30 01:09:49 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cub3d.h"
+#ifndef GAMELOOP_H
+# define GAMELOOP_H
 
-int	close_handler(t_ctx *ctx)
-{
-	ctx_free(ctx);
-	return (1);
-}
+# include "structures.h"
+
+int	gameloop(t_ctx *ctx);
+
+#endif

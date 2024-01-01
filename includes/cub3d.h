@@ -15,6 +15,9 @@
 #include "mlx_utils.h"
 #include "colors.h"
 #include "events.h"
+#include "ctx.h"
+#include "win.h"
+#include "gameloop.h"
 
 typedef struct s_mlx_data
 {

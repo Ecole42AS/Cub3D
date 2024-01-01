@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_handler.c                                    :+:      :+:    :+:   */
+/*   ctx_free.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/29 23:23:05 by lray              #+#    #+#             */
-/*   Updated: 2023/12/30 00:42:58 by lray             ###   ########.fr       */
+/*   Created: 2023/12/30 00:10:40 by lray              #+#    #+#             */
+/*   Updated: 2023/12/30 02:31:06 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	close_handler(t_ctx *ctx)
+void	ctx_free(t_ctx *ctx)
 {
-	ctx_free(ctx);
-	return (1);
+	win_free(&ctx->win);
+	mlx_destroy_display(ctx->mlx);
+	free(ctx->mlx);
+	ctx->mlx = NULL;
+	ctx = NULL;
+	exit (0);
 }

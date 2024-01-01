@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_handler.c                                    :+:      :+:    :+:   */
+/*   ctx_show.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/29 23:23:05 by lray              #+#    #+#             */
-/*   Updated: 2023/12/30 00:42:58 by lray             ###   ########.fr       */
+/*   Created: 2023/12/30 00:52:31 by lray              #+#    #+#             */
+/*   Updated: 2023/12/30 02:14:26 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	close_handler(t_ctx *ctx)
+void	ctx_show(t_ctx *ctx)
 {
-	ctx_free(ctx);
-	return (1);
+	printf("ctx : %p\n", ctx);
+	printf("ctx->mlx : %p\n", ctx->mlx);
+
 }
