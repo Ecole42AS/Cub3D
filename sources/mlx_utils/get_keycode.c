@@ -6,12 +6,11 @@
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 13:50:28 by astutz            #+#    #+#             */
-/*   Updated: 2024/01/02 13:50:44 by astutz           ###   ########.fr       */
+/*   Updated: 2024/01/02 23:31:32 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../minilibx/linux/mlx.h"
-#include <stdio.h>
+#include "../../includes/cub3d.h"
 
 int key_hook(int keycode, void *param)
 {
