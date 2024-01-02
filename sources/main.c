@@ -6,9 +6,13 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 09:15:29 by astutz            #+#    #+#             */
-/*   Updated: 2024/01/02 16:09:01 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/02 16:59:14 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../includes/cub3d.h"
+//!!DEBUG!!
+#include <time.h>
 
 #define WIN_NAME "Proto"
 #define WIN_WIDTH 640
@@ -16,8 +20,10 @@
 #define MAP_WIDTH 24
 #define MAP_HEIGHT 24
 
-int worldMap[MAP_WIDTH][MAP_HEIGHT] =
-	{
+t_map	map = {
+	.width = MAP_WIDTH,
+	.height = MAP_HEIGHT,
+	.map = {
 		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
 		{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 		{1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
@@ -41,12 +47,9 @@ int worldMap[MAP_WIDTH][MAP_HEIGHT] =
 		{1, 4, 0, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 		{1, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
 		{1, 4, 4, 4, 4, 4, 4, 4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
-		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}};
-
-#include "../includes/cub3d.h"
-
-//!!DEBUG!!
-#include <time.h>
+		{1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1}
+	}
+};
 
 /*
 	TODO:
@@ -62,6 +65,7 @@ int main(void)
 	srand(time(NULL));
 
 	ctx_init(&ctx, WIN_WIDTH, WIN_HEIGHT, WIN_NAME);
+	ctx.map = map;
 	mlx_hook(ctx.win.win, ON_DESTROY, 0, close_handler, &ctx);
 	mlx_key_hook(ctx.win.win, key_handler, &ctx);
 	mlx_loop_hook(ctx.mlx, gameloop, &ctx);
