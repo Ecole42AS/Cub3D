@@ -15,6 +15,7 @@ SRCS	=	sources/parsing/parsing_utils.c 	\
 			sources/win/win_init.c				\
 			sources/win/win_free.c				\
 			sources/gameloop/gameloop.c			\
+			sources/gameloop/raycasting.c		\
 			sources/init.c
 
 NAME	=	cub3D
