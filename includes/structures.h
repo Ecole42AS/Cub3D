@@ -6,12 +6,18 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 16:07:57 by lray              #+#    #+#             */
-/*   Updated: 2024/01/02 16:58:46 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/04 00:09:10 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTURES_H
 # define STRUCTURES_H
+
+typedef struct s_vec
+{
+	int	x;
+	int	y;
+}	t_vec;
 
 typedef struct s_map
 {
@@ -20,6 +26,11 @@ typedef struct s_map
 	int	map[24][24];
 }	t_map;
 
+typedef struct s_player
+{
+	t_vec	pos;
+	t_vec	dir;
+}	t_player;
 
 typedef struct s_win
 {
@@ -40,9 +51,10 @@ typedef struct s_win_params
 
 typedef struct s_ctx
 {
-	void	*mlx;
-	t_win	win;
-	t_map	map;
+	void		*mlx;
+	t_win		win;
+	t_map		map;
+	t_player	player;
 }	t_ctx;
 
 typedef struct s_image
