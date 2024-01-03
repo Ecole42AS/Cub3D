@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 09:15:29 by astutz            #+#    #+#             */
-/*   Updated: 2024/01/04 00:12:51 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/04 00:22:12 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int main(void)
 
 	ctx_init(&ctx, WIN_WIDTH, WIN_HEIGHT, WIN_NAME);
 	ctx.map = map;
-	player_init(&ctx.player, (t_vec){22, 12}, (t_vec){-1, 0});
+	player_init(&ctx.player, (t_vec){22, 12}, (t_vec){-1, 0}, (t_vec){0, 0.66});
 	mlx_hook(ctx.win.win, ON_DESTROY, 0, close_handler, &ctx);
 	mlx_key_hook(ctx.win.win, key_handler, &ctx);
 	mlx_loop_hook(ctx.mlx, gameloop, &ctx);

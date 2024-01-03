@@ -6,13 +6,13 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 00:01:18 by lray              #+#    #+#             */
-/*   Updated: 2024/01/04 00:08:32 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/04 00:21:20 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PLAYER_H
 #define PLAYER_H
 
-void	player_init(t_player *player, t_vec pos, t_vec dir);
+void	player_init(t_player *player, t_vec pos, t_vec dir, t_vec cam);
 
 #endif

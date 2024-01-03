@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 16:07:57 by lray              #+#    #+#             */
-/*   Updated: 2024/01/04 00:09:10 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/04 00:21:56 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 
 typedef struct s_vec
 {
-	int	x;
-	int	y;
+	double	x;
+	double	y;
 }	t_vec;
 
 typedef struct s_map
@@ -30,6 +30,7 @@ typedef struct s_player
 {
 	t_vec	pos;
 	t_vec	dir;
+	t_vec	cam;
 }	t_player;
 
 typedef struct s_win

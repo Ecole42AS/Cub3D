@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 17:01:13 by lray              #+#    #+#             */
-/*   Updated: 2024/01/04 00:18:04 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/04 00:23:25 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,15 @@ static void	draw_verline(t_image *frame, int col, int start, int end);
 
 t_image	*raycasting(t_ctx *ctx, t_image *frame)
 {
-	/* Camera plan */
-	double	planeX = 0;
-	double	planeY = 0.66;
-	/* Loop control */
-	int		x = 0;
+	int		x;
 
-	/* Each iter of the loop is a ray */
+	x = 0;
 	while (x < ctx->win.width)
 	{
 		/* Camera Space */
 		double	cameraX = 2 * x / (double)ctx->win.width - 1;
-		double	rayDirX = ctx->player.dir.x + planeX * cameraX;
-		double	rayDirY = ctx->player.dir.y + planeY * cameraX;
+		double	rayDirX = ctx->player.dir.x + ctx->player.cam.x * cameraX;
+		double	rayDirY = ctx->player.dir.y + ctx->player.cam.y * cameraX;
 
 		int		mapX = (int)ctx->player.pos.x;
 		int		mapY = (int)ctx->player.pos.y;
