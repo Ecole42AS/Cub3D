@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 16:07:57 by lray              #+#    #+#             */
-/*   Updated: 2024/01/04 00:21:56 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/04 00:55:54 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,25 @@ typedef struct s_vec
 	double	x;
 	double	y;
 }	t_vec;
+
+typedef struct s_veci
+{
+	int	x;
+	int	y;
+}	t_veci;
+
+typedef struct s_ray
+{
+	double	camera_x;
+	t_vec	dir;
+	t_veci	map;
+	t_vec	side_dist;
+	t_vec	delta_dist;
+	double	perp_wall_dist;
+	t_veci	step;
+	int		hit;
+	int		side;
+}	t_ray;
 
 typedef struct s_map
 {

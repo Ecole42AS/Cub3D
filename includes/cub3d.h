@@ -19,6 +19,7 @@
 #include "win.h"
 #include "gameloop.h"
 #include "player.h"
+#include "ray.h"
 
 typedef struct s_mlx_data
 {
