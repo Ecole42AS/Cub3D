@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 20:49:26 by lray              #+#    #+#             */
-/*   Updated: 2024/01/06 08:30:47 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/06 10:12:44 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,23 +56,27 @@ int	key_handler(int keycode, void *param)
 	}
 	else if (keycode == KEY_LEFT)
 	{
-		double oldDirX = ctx->player.dir.x;
-		double oldPlaneX = ctx->player.cam.x;
+		double old_dir_x;
+		double old_plane_x = ctx->player.cam.x;
 
+		old_dir_x = ctx->player.dir.x;
+		old_plane_x = ctx->player.cam.x;
 		ctx->player.dir.x = ctx->player.dir.x * cos(rot_speed) - ctx->player.dir.y * sin(rot_speed);
-		ctx->player.dir.y = oldDirX * sin(rot_speed) + ctx->player.dir.y  * cos(rot_speed);
+		ctx->player.dir.y = old_dir_x * sin(rot_speed) + ctx->player.dir.y  * cos(rot_speed);
 		ctx->player.cam.x = ctx->player.cam.x * cos(rot_speed) - ctx->player.cam.y * sin(rot_speed);
-		ctx->player.cam.y = oldPlaneX * sin(rot_speed) + ctx->player.cam.y * cos(rot_speed);
+		ctx->player.cam.y = old_plane_x * sin(rot_speed) + ctx->player.cam.y * cos(rot_speed);
 	}
 	else if (keycode == KEY_RIGHT)
 	{
-		double oldDirX = ctx->player.dir.x;
-		double oldPlaneX = ctx->player.cam.x;
+		double old_dir_x;
+		double old_plane_x;
 
+		old_dir_x = ctx->player.dir.x;
+		old_plane_x = ctx->player.cam.x;
 		ctx->player.dir.x = ctx->player.dir.x * cos(-rot_speed) - ctx->player.dir.y * sin(-rot_speed);
-		ctx->player.dir.y = oldDirX * sin(-rot_speed) + ctx->player.dir.y  * cos(-rot_speed);
+		ctx->player.dir.y = old_dir_x * sin(-rot_speed) + ctx->player.dir.y  * cos(-rot_speed);
 		ctx->player.cam.x = ctx->player.cam.x * cos(-rot_speed) - ctx->player.cam.y * sin(-rot_speed);
-		ctx->player.cam.y = oldPlaneX * sin(-rot_speed) + ctx->player.cam.y * cos(-rot_speed);
+		ctx->player.cam.y = old_plane_x * sin(-rot_speed) + ctx->player.cam.y * cos(-rot_speed);
 	}
 	return (0);
 }
