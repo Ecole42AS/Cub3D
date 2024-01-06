@@ -6,13 +6,13 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 17:01:13 by lray              #+#    #+#             */
-/*   Updated: 2024/01/04 01:30:20 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/06 09:49:36 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void	draw_verline(t_image *frame, int col, int start, int end);
+static void	draw_verline(t_image *frame, int col, int start, int end, int color);
 
 t_image	*raycasting(t_ctx *ctx, t_image *frame)
 {
@@ -36,20 +36,23 @@ t_image	*raycasting(t_ctx *ctx, t_image *frame)
 		draw_end = line_heigth / 2 + ctx->win.height / 2;
 		if (draw_end >= ctx->win.height)
 			draw_end = ctx->win.height - 1;
-		draw_verline(frame, x, draw_start, draw_end);
+		if (ray.side == 0)
+			draw_verline(frame, x, draw_start, draw_end, CLR_DARK_GRAY);
+		else
+			draw_verline(frame, x, draw_start, draw_end, CLR_GRAY);
 		++x;
 	}
 	return (frame);
 }
 
-static void	draw_verline(t_image *frame, int col, int start, int end)
+static void	draw_verline(t_image *frame, int col, int start, int end, int color)
 {
 	int	y;
 
 	y = start;
 	while (y < end)
 	{
-		put_pixel(frame, col, y, CLR_RED);
+		put_pixel(frame, col, y, color);
 		++y;
 	}
 }
