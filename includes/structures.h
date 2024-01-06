@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 16:07:57 by lray              #+#    #+#             */
-/*   Updated: 2024/01/04 00:55:54 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/06 08:46:54 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,6 @@ typedef struct s_win_params
 	char	*name;
 }	t_win_params;
 
-typedef struct s_ctx
-{
-	void		*mlx;
-	t_win		win;
-	t_map		map;
-	t_player	player;
-}	t_ctx;
-
 typedef struct s_image
 {
 	void	*data;
@@ -87,5 +79,14 @@ typedef struct s_image
 	int		width;
 	int		height;
 }	t_image;
+
+typedef struct s_ctx
+{
+	void		*mlx;
+	t_win		win;
+	t_map		map;
+	t_player	player;
+	t_image		*background;
+}	t_ctx;
 
 #endif

@@ -6,16 +6,13 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 01:01:19 by lray              #+#    #+#             */
-/*   Updated: 2024/01/02 18:29:00 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/06 10:08:14 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-#define TILE_SIZE 20
-
 static void			render(t_ctx *ctx, t_image *img);
-
 
 int gameloop(t_ctx *ctx)
 {
@@ -23,6 +20,7 @@ int gameloop(t_ctx *ctx)
 
 	frame = NULL;
 	frame = img_create(ctx->mlx, ctx->win.width, ctx->win.height);
+	put_img_to_img(frame, ctx->background, 0, 0);
 	frame = raycasting(ctx, frame);
 	render(ctx, frame);
 	return (1);
