@@ -6,11 +6,14 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 20:49:26 by lray              #+#    #+#             */
-/*   Updated: 2023/12/30 00:56:54 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/06 08:30:47 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+double move_speed = 0.9;
+double rot_speed = 0.3;
 
 int	key_handler(int keycode, void *param)
 {
@@ -22,27 +25,54 @@ int	key_handler(int keycode, void *param)
 		exit (0);
 	}
 	else if (keycode == KEY_W)
-		printf("-> W !!!\n");
-	else if (keycode == KEY_A)
-		printf("-> A !!!\n");
+	{
+		ctx->player.pos.x += ctx->player.dir.x * move_speed;
+		ctx->player.pos.y += ctx->player.dir.y * move_speed;
+	}
 	else if (keycode == KEY_S)
-		printf("-> S !!!\n");
+	{
+		ctx->player.pos.x -= ctx->player.dir.x * move_speed;
+		ctx->player.pos.y -= ctx->player.dir.y * move_speed;
+	}
+	else if (keycode == KEY_A)
+	{
+		ctx->player.pos.x -= ctx->player.dir.y;
+		ctx->player.pos.y += ctx->player.dir.x;
+	}
 	else if (keycode == KEY_D)
-		printf("-> D !!!\n");
+	{
+		ctx->player.pos.x += ctx->player.dir.y;
+		ctx->player.pos.y -= ctx->player.dir.x;
+	}
 	else if (keycode == KEY_UP)
 	{
-		printf("-> KEYUP !!!\n");
-		ctx_show(ctx);
+		ctx->player.pos.x += ctx->player.dir.x;
+		ctx->player.pos.y += ctx->player.dir.y;
 	}
 	else if (keycode == KEY_DOWN)
 	{
-		printf("-> KEYDOWN !!!\n");
-		ctx_show(ctx);
+		ctx->player.pos.x -= ctx->player.dir.x;
+		ctx->player.pos.y -= ctx->player.dir.y;
 	}
 	else if (keycode == KEY_LEFT)
-		printf("-> KEYLEFT !!!\n");
+	{
+		double oldDirX = ctx->player.dir.x;
+		double oldPlaneX = ctx->player.cam.x;
+
+		ctx->player.dir.x = ctx->player.dir.x * cos(rot_speed) - ctx->player.dir.y * sin(rot_speed);
+		ctx->player.dir.y = oldDirX * sin(rot_speed) + ctx->player.dir.y  * cos(rot_speed);
+		ctx->player.cam.x = ctx->player.cam.x * cos(rot_speed) - ctx->player.cam.y * sin(rot_speed);
+		ctx->player.cam.y = oldPlaneX * sin(rot_speed) + ctx->player.cam.y * cos(rot_speed);
+	}
 	else if (keycode == KEY_RIGHT)
-		printf("-> KEYRIGHT !!!\n");
-	printf("keycode -> %d\n", keycode);
+	{
+		double oldDirX = ctx->player.dir.x;
+		double oldPlaneX = ctx->player.cam.x;
+
+		ctx->player.dir.x = ctx->player.dir.x * cos(-rot_speed) - ctx->player.dir.y * sin(-rot_speed);
+		ctx->player.dir.y = oldDirX * sin(-rot_speed) + ctx->player.dir.y  * cos(-rot_speed);
+		ctx->player.cam.x = ctx->player.cam.x * cos(-rot_speed) - ctx->player.cam.y * sin(-rot_speed);
+		ctx->player.cam.y = oldPlaneX * sin(-rot_speed) + ctx->player.cam.y * cos(-rot_speed);
+	}
 	return (0);
 }

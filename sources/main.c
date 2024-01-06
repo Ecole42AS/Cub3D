@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 09:15:29 by astutz            #+#    #+#             */
-/*   Updated: 2024/01/04 00:22:12 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/04 01:45:22 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,6 @@ t_map	map = {
 int main(void)
 {
 	t_ctx ctx;
-
-	//!!DEBUG!!
-	srand(time(NULL));
 
 	ctx_init(&ctx, WIN_WIDTH, WIN_HEIGHT, WIN_NAME);
 	ctx.map = map;
