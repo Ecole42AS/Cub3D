@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 01:14:43 by lray              #+#    #+#             */
-/*   Updated: 2024/01/04 01:17:40 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/07 05:44:51 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,21 @@ void	ray_dda(t_ctx *ctx, t_ray *ray)
 			ray->side = 1;
 		}
 		if (ctx->map.map[ray->map.x][ray->map.y] > 0)
-			ray->hit = 1;
+		{
+			if (ray->side == 0)
+			{
+				if (ray->dir.x > 0)
+					ray->hit = RAY_WE;
+				else
+					ray->hit = RAY_EA;
+			}
+			else
+			{
+				if (ray->dir.y > 0)
+					ray->hit = RAY_SU;
+				else
+					ray->hit = RAY_NO;
+			}
+		}
 	}
 }

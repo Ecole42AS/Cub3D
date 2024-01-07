@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 17:01:13 by lray              #+#    #+#             */
-/*   Updated: 2024/01/06 09:49:36 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/07 05:49:12 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,14 @@ t_image	*raycasting(t_ctx *ctx, t_image *frame)
 		draw_end = line_heigth / 2 + ctx->win.height / 2;
 		if (draw_end >= ctx->win.height)
 			draw_end = ctx->win.height - 1;
-		if (ray.side == 0)
-			draw_verline(frame, x, draw_start, draw_end, CLR_DARK_GRAY);
+		if (ray.hit == RAY_EA)
+			draw_verline(frame, x, draw_start, draw_end, CLR_RED);
+		else if (ray.hit == RAY_WE)
+			draw_verline(frame, x, draw_start, draw_end, CLR_INDIGO);
+		else if (ray.hit == RAY_NO)
+			draw_verline(frame, x, draw_start, draw_end, CLR_ORANGE);
 		else
-			draw_verline(frame, x, draw_start, draw_end, CLR_GRAY);
+			draw_verline(frame, x, draw_start, draw_end, CLR_MAGENTA);
 		++x;
 	}
 	return (frame);
