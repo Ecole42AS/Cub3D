@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_keycode.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 13:50:28 by astutz            #+#    #+#             */
-/*   Updated: 2024/01/03 00:03:10 by astutz           ###   ########.fr       */
+/*   Updated: 2024/01/07 05:35:12 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int key_hook(int keycode, void *param)
     return (0);
 }
 
-int main(void)
+/* int main(void)
 {
     void *mlx;
     void *win;
@@ -33,4 +33,4 @@ int main(void)
     mlx_loop(mlx);
 
     return (0);
-}
+} */
