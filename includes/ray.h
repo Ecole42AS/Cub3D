@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gameloop.h                                         :+:      :+:    :+:   */
+/*   ray.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/30 01:09:00 by lray              #+#    #+#             */
-/*   Updated: 2024/01/02 18:29:22 by lray             ###   ########.fr       */
+/*   Created: 2024/01/04 00:38:45 by lray              #+#    #+#             */
+/*   Updated: 2024/01/04 01:25:16 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GAMELOOP_H
-# define GAMELOOP_H
+#ifndef RAY_H
+# define RAY_H
 
 # include "structures.h"
+# include <math.h>
 
-int		gameloop(t_ctx *ctx);
-t_image	*raycasting(t_ctx *ctx, t_image *frame);
+void	ray_init(t_ctx *ctx, t_ray *ray, int x);
+void	ray_dda(t_ctx *ctx, t_ray *ray);
+void	ray_calculate_perp_wall_dist(t_ray *ray);
 
 #endif

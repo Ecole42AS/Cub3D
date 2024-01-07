@@ -1,21 +1,26 @@
-SRCS	=	sources/parsing/parsing_utils.c 	\
-			sources/parsing/textures.c 			\
-			sources/main.c						\
-			sources/mlx_utils/put_pixel.c		\
-			sources/mlx_utils/get_pixel.c		\
-			sources/mlx_utils/put_img_to_img.c	\
-			sources/mlx_utils/img_create.c		\
-			sources/mlx_utils/get_keycode.c     \
-			sources/colors/clr_make_trgb.c		\
-			sources/colors/clr_get.c			\
-			sources/events/key_handler.c		\
-			sources/events/close_handler.c		\
-			sources/ctx/ctx_init.c				\
-			sources/ctx/ctx_show.c				\
-			sources/ctx/ctx_free.c				\
-			sources/win/win_init.c				\
-			sources/win/win_free.c				\
-			sources/gameloop/gameloop.c			\
+SRCS	=	sources/parsing/parsing_utils.c 			\
+			sources/parsing/textures.c 					\
+			sources/main.c								\
+			sources/mlx_utils/put_pixel.c				\
+			sources/mlx_utils/get_pixel.c				\
+			sources/mlx_utils/put_img_to_img.c			\
+			sources/mlx_utils/img_create.c				\
+      sources/mlx_utils/get_keycode.c     \
+			sources/colors/clr_make_trgb.c				\
+			sources/colors/clr_get.c					\
+			sources/events/key_handler.c				\
+			sources/events/close_handler.c				\
+			sources/ctx/ctx_init.c						\
+			sources/ctx/ctx_show.c						\
+			sources/ctx/ctx_free.c						\
+			sources/win/win_init.c						\
+			sources/win/win_free.c						\
+			sources/gameloop/gameloop.c					\
+			sources/gameloop/raycasting.c				\
+			sources/player/player_init.c				\
+			sources/ray/ray_init.c						\
+			sources/ray/ray_dda.c						\
+			sources/ray/ray_calculate_perp_wall_dist.c	\
 			sources/init.c
 
 NAME	=	cub3D

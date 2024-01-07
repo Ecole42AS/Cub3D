@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gameloop.h                                         :+:      :+:    :+:   */
+/*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/30 01:09:00 by lray              #+#    #+#             */
-/*   Updated: 2024/01/02 18:29:22 by lray             ###   ########.fr       */
+/*   Created: 2024/01/04 00:01:18 by lray              #+#    #+#             */
+/*   Updated: 2024/01/04 00:21:20 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GAMELOOP_H
-# define GAMELOOP_H
+#ifndef PLAYER_H
+#define PLAYER_H
 
-# include "structures.h"
-
-int		gameloop(t_ctx *ctx);
-t_image	*raycasting(t_ctx *ctx, t_image *frame);
+void	player_init(t_player *player, t_vec pos, t_vec dir, t_vec cam);
 
 #endif

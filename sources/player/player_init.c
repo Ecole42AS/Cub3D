@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gameloop.h                                         :+:      :+:    :+:   */
+/*   player_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/30 01:09:00 by lray              #+#    #+#             */
-/*   Updated: 2024/01/02 18:29:22 by lray             ###   ########.fr       */
+/*   Created: 2024/01/04 00:03:00 by lray              #+#    #+#             */
+/*   Updated: 2024/01/04 00:21:05 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GAMELOOP_H
-# define GAMELOOP_H
+#include "../../includes/cub3d.h"
 
-# include "structures.h"
+void	player_init(t_player *player, t_vec pos, t_vec dir, t_vec cam)
+{
+	player->pos.x = pos.x;
+	player->pos.y = pos.y;
+	player->dir.x = dir.x;
+	player->dir.y = dir.y;
+	player->cam.x = cam.x;
+	player->cam.y = cam.y;
+}
 
-int		gameloop(t_ctx *ctx);
-t_image	*raycasting(t_ctx *ctx, t_image *frame);
-
-#endif

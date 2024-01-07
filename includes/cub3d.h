@@ -18,6 +18,8 @@
 #include "ctx.h"
 #include "win.h"
 #include "gameloop.h"
+#include "player.h"
+#include "ray.h"
 
 typedef struct s_mlx_data
 {
@@ -29,14 +31,6 @@ typedef struct s_mlx_data
 	int		line_length;
 	int		endian;
 }			t_mlx_data;
-
-
-typedef struct s_vector
-{
-	int	x;
-	int	y;
-}		t_vector;
-
 
     // mlx_ptr = mlx_init();
     // win_ptr = mlx_new_window(mlx_ptr, width, height, "Ma Fenêtre Minilibx");

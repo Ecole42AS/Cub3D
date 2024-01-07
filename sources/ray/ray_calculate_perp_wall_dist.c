@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   gameloop.h                                         :+:      :+:    :+:   */
+/*   ray_calculate_perp_wall_dist.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/30 01:09:00 by lray              #+#    #+#             */
-/*   Updated: 2024/01/02 18:29:22 by lray             ###   ########.fr       */
+/*   Created: 2024/01/04 01:21:22 by lray              #+#    #+#             */
+/*   Updated: 2024/01/04 01:24:10 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GAMELOOP_H
-# define GAMELOOP_H
+#include "../../includes/cub3d.h"
 
-# include "structures.h"
-
-int		gameloop(t_ctx *ctx);
-t_image	*raycasting(t_ctx *ctx, t_image *frame);
-
-#endif
+void	ray_calculate_perp_wall_dist(t_ray *ray)
+{
+	if (ray->side == 0)
+		ray->perp_wall_dist = (ray->side_dist.x - ray->delta_dist.x);
+	else
+		ray->perp_wall_dist = (ray->side_dist.y - ray->delta_dist.y);
+}
