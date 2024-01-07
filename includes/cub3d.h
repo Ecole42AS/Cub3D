@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <fcntl.h>
 #include <errno.h>
-#include "mlx.h"
+#include "../minilibx/linux/mlx.h"
 
 #include "structures.h"
 #include "mlx_utils.h"
