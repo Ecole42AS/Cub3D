@@ -1,31 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_pixel.c                                        :+:      :+:    :+:   */
+/*   img_free.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/19 16:16:34 by lray              #+#    #+#             */
-/*   Updated: 2024/01/08 07:22:48 by lray             ###   ########.fr       */
+/*   Created: 2024/01/08 04:38:33 by lray              #+#    #+#             */
+/*   Updated: 2024/01/08 06:18:15 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	get_pixel(t_image *img, int x, int y)
+void	img_free(t_ctx *ctx, t_image *img)
 {
-	char	*src;
-
-	if (!img  || !img->addr)
-	{
-		ft_putstr_fd("Image is NULL\n", 2);
-		return (-1);
-	}
-	if (x < 0 || y >= img->width || y < 0 || y >= img->height)
-	{
-		ft_putstr_fd("Coordinates are out of bounds\n", 2);
-		return (-1);
-	}
-	src = img->addr + (y * img->line_len + x * (img->bpp / 8));
-	return (*(unsigned int*)src);
+	if (img)
+		mlx_destroy_image(ctx->mlx, img->data);
+	free(img);
 }
