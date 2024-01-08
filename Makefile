@@ -5,12 +5,15 @@ SRCS	=	sources/parsing/parsing_utils.c 			\
 			sources/mlx_utils/get_pixel.c				\
 			sources/mlx_utils/put_img_to_img.c			\
 			sources/mlx_utils/img_create.c				\
+			sources/mlx_utils/img_load.c				\
+			sources/mlx_utils/img_free.c				\
 			sources/mlx_utils/get_keycode.c				\
 			sources/colors/clr_make_trgb.c				\
 			sources/colors/clr_get.c					\
 			sources/events/key_handler.c				\
 			sources/events/close_handler.c				\
 			sources/ctx/ctx_init.c						\
+			sources/ctx/ctx_init_textures.c				\
 			sources/ctx/ctx_show.c						\
 			sources/ctx/ctx_free.c						\
 			sources/win/win_init.c						\
@@ -32,6 +35,8 @@ CC		=	gcc
 RM      =	rm -f
 
 CFLAGS	=	-Wall -Wextra -Werror -g -fsanitize=address,undefined
+
+# -fsanitize=address,undefined
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)
