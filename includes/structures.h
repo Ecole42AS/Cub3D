@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 16:07:57 by lray              #+#    #+#             */
-/*   Updated: 2024/01/06 08:46:54 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/08 04:32:23 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ typedef struct s_ctx
 	t_win		win;
 	t_map		map;
 	t_player	player;
-	t_image		*background;
+	t_image		*textures[5];
 }	t_ctx;
 
 #endif
