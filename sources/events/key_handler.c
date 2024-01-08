@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 20:49:26 by lray              #+#    #+#             */
-/*   Updated: 2024/01/06 10:12:44 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/08 04:12:29 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ double rot_speed = 0.3;
 int	key_handler(int keycode, void *param)
 {
 	t_ctx *ctx = param;
+	double	new_x;
+	double	new_y;
+	double old_dir_x;
+	double old_plane_x;
 
 	if (keycode == KEY_ESC)
 	{
@@ -26,39 +30,48 @@ int	key_handler(int keycode, void *param)
 	}
 	else if (keycode == KEY_W)
 	{
-		ctx->player.pos.x += ctx->player.dir.x * move_speed;
-		ctx->player.pos.y += ctx->player.dir.y * move_speed;
+		new_x = ctx->player.pos.x + ctx->player.dir.x * move_speed;
+		new_y = ctx->player.pos.y + ctx->player.dir.y * move_speed;
+		ctx->player.pos.x = new_x;
+		ctx->player.pos.y = new_y;
 	}
 	else if (keycode == KEY_S)
 	{
-		ctx->player.pos.x -= ctx->player.dir.x * move_speed;
-		ctx->player.pos.y -= ctx->player.dir.y * move_speed;
+		new_x = ctx->player.pos.x - ctx->player.dir.x * move_speed;
+		new_y = ctx->player.pos.y - ctx->player.dir.y * move_speed;
+		ctx->player.pos.x = new_x;
+		ctx->player.pos.y = new_y;
 	}
 	else if (keycode == KEY_A)
 	{
-		ctx->player.pos.x -= ctx->player.dir.y;
-		ctx->player.pos.y += ctx->player.dir.x;
+		new_x = ctx->player.pos.x - ctx->player.dir.y * move_speed;
+		new_y = ctx->player.pos.y + ctx->player.dir.x * move_speed;
+		ctx->player.pos.x = new_x;
+		ctx->player.pos.y = new_y;
 	}
 	else if (keycode == KEY_D)
 	{
-		ctx->player.pos.x += ctx->player.dir.y;
-		ctx->player.pos.y -= ctx->player.dir.x;
+		new_x = ctx->player.pos.x + ctx->player.dir.y * move_speed;
+		new_y = ctx->player.pos.y - ctx->player.dir.x * move_speed;
+		ctx->player.pos.x = new_x;
+		ctx->player.pos.y = new_y;
 	}
 	else if (keycode == KEY_UP)
 	{
-		ctx->player.pos.x += ctx->player.dir.x;
-		ctx->player.pos.y += ctx->player.dir.y;
+		new_x = ctx->player.pos.x + ctx->player.dir.x * move_speed;
+		new_y = ctx->player.pos.y + ctx->player.dir.y * move_speed;
+		ctx->player.pos.x = new_x;
+		ctx->player.pos.y = new_y;
 	}
 	else if (keycode == KEY_DOWN)
 	{
-		ctx->player.pos.x -= ctx->player.dir.x;
-		ctx->player.pos.y -= ctx->player.dir.y;
+		new_x = ctx->player.pos.x - ctx->player.dir.x * move_speed;
+		new_y = ctx->player.pos.y - ctx->player.dir.y * move_speed;
+		ctx->player.pos.x = new_x;
+		ctx->player.pos.y = new_y;
 	}
 	else if (keycode == KEY_LEFT)
 	{
-		double old_dir_x;
-		double old_plane_x = ctx->player.cam.x;
-
 		old_dir_x = ctx->player.dir.x;
 		old_plane_x = ctx->player.cam.x;
 		ctx->player.dir.x = ctx->player.dir.x * cos(rot_speed) - ctx->player.dir.y * sin(rot_speed);
@@ -68,9 +81,6 @@ int	key_handler(int keycode, void *param)
 	}
 	else if (keycode == KEY_RIGHT)
 	{
-		double old_dir_x;
-		double old_plane_x;
-
 		old_dir_x = ctx->player.dir.x;
 		old_plane_x = ctx->player.cam.x;
 		ctx->player.dir.x = ctx->player.dir.x * cos(-rot_speed) - ctx->player.dir.y * sin(-rot_speed);
@@ -80,3 +90,4 @@ int	key_handler(int keycode, void *param)
 	}
 	return (0);
 }
+
