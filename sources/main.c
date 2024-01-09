@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 09:15:29 by astutz            #+#    #+#             */
-/*   Updated: 2024/01/08 09:17:53 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/08 14:22:28 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,10 @@ t_map	map = {
 };
 
 char	*tex_paths[] = {
-	"assets/redbrick.xpm",
-	"assets/mossy.xpm",
-	"assets/greystone.xpm",
-	"assets/colorstone.xpm",
+	"assets/redbrick.xpm",		//NORD
+	"assets/mossy.xpm",			//SUD
+	"assets/greystone.xpm",		//EST
+	"assets/colorstone.xpm",	//OUEST
 };
 
 int main(void)
