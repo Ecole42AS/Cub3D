@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 00:37:38 by lray              #+#    #+#             */
-/*   Updated: 2024/01/04 01:40:11 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/09 22:36:18 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ void	ray_init(t_ctx *ctx, t_ray *ray, int x)
 	ray->step.y = 0;
 	ray->hit = 0;
 	ray->side = 0;
+	ray->draw_point[0] = 0;
+	ray->draw_point[1] = 0;
+	ray->line_height = 0;
+	ray->wall_x = 0;
 	set_delta_dist(ray);
 	set_step_and_side_dist(ctx, ray);
 }

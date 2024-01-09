@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   go_front.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/19 08:26:07 by astutz            #+#    #+#             */
-/*   Updated: 2024/01/09 10:47:41 by lray             ###   ########.fr       */
+/*   Created: 2024/01/09 11:05:26 by lray              #+#    #+#             */
+/*   Updated: 2024/01/09 11:12:27 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../includes/cub3d.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+void	go_front(t_ctx *ctx)
 {
-	t_list	*tmp;
+	double	new_x;
+	double	new_y;
 
-	if (!lst)
-		return ;
-	if (*lst && del)
-	{
-		while (*lst)
-		{
-			tmp = (*lst)->next;
-			del((*lst)->content);
-			free(*lst);
-			*lst = tmp;
-		}
-		*lst = NULL;
-	}
+	new_x = ctx->player.pos.x + ctx->player.dir.x * MOVE_SPEED;
+	new_y = ctx->player.pos.y + ctx->player.dir.y * MOVE_SPEED;
+	ctx->player.pos.x = new_x;
+	ctx->player.pos.y = new_y;
 }

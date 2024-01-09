@@ -6,15 +6,15 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 04:21:34 by lray              #+#    #+#             */
-/*   Updated: 2024/01/08 09:21:13 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/09 23:17:15 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void	make_background(t_ctx *ctx, unsigned int color1, unsigned int color2);
+static void	make_background(t_ctx *ctx, unsigned int c1, unsigned int c2);
 
-int	ctx_init_textures(t_ctx *ctx,unsigned int colors[2], char **tex_path)
+int	ctx_init_textures(t_ctx *ctx, unsigned int colors[2], char **tex_path)
 {
 	int	i;
 
@@ -31,7 +31,7 @@ int	ctx_init_textures(t_ctx *ctx,unsigned int colors[2], char **tex_path)
 	return (0);
 }
 
-static void	make_background(t_ctx *ctx, unsigned int color1, unsigned int color2)
+static void	make_background(t_ctx *ctx, unsigned int c1, unsigned int c2)
 {
 	int	x;
 	int	y;
@@ -43,9 +43,9 @@ static void	make_background(t_ctx *ctx, unsigned int color1, unsigned int color2
 		while (x < ctx->win.width)
 		{
 			if (y < ctx->win.height / 2)
-				put_pixel(ctx->textures[0], x, y, color1);
+				put_pixel(ctx->textures[0], x, y, c1);
 			else
-				put_pixel(ctx->textures[0], x, y, color2);
+				put_pixel(ctx->textures[0], x, y, c2);
 			++x;
 		}
 		++y;

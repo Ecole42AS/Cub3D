@@ -24,6 +24,15 @@ SRCS	=	sources/parsing/parsing_utils.c 			\
 			sources/ray/ray_init.c						\
 			sources/ray/ray_dda.c						\
 			sources/ray/ray_calculate_perp_wall_dist.c	\
+			sources/ray/ray_calculate_line_height.c		\
+			sources/ray/ray_calculate_draw_points.c		\
+			sources/ray/ray_calculate_wall_x.c			\
+			sources/move/go_front.c						\
+			sources/move/go_back.c						\
+			sources/move/go_left.c						\
+			sources/move/go_right.c						\
+			sources/move/rotate_left.c					\
+			sources/move/rotate_right.c					\
 			sources/init.c
 
 NAME	=	cub3D

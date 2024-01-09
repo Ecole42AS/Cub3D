@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   move.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/19 08:26:07 by astutz            #+#    #+#             */
-/*   Updated: 2024/01/09 10:47:41 by lray             ###   ########.fr       */
+/*   Created: 2024/01/09 11:04:26 by lray              #+#    #+#             */
+/*   Updated: 2024/01/09 11:12:18 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef MOVE_H
+# define MOVE_H
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
-{
-	t_list	*tmp;
+# define MOVE_SPEED 0.9
+# define ROT_SPEED 0.3
 
-	if (!lst)
-		return ;
-	if (*lst && del)
-	{
-		while (*lst)
-		{
-			tmp = (*lst)->next;
-			del((*lst)->content);
-			free(*lst);
-			*lst = tmp;
-		}
-		*lst = NULL;
-	}
-}
+void	go_front(t_ctx *ctx);
+void	go_back(t_ctx *ctx);
+void	go_left(t_ctx *ctx);
+void	go_right(t_ctx *ctx);
+void	rotate_left(t_ctx *ctx);
+void	rotate_right(t_ctx *ctx);
+
+#endif

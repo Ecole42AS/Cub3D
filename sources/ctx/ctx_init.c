@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 23:51:50 by lray              #+#    #+#             */
-/*   Updated: 2023/12/30 02:10:25 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/09 23:15:36 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ctx_init(t_ctx *ctx, int width, int height, char *name)
 {
-	t_win_params params;
+	t_win_params	params;
 
 	ctx->mlx = mlx_init();
 	params.mlx = ctx->mlx;

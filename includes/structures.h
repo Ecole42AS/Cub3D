@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 16:07:57 by lray              #+#    #+#             */
-/*   Updated: 2024/01/08 04:32:23 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/09 22:44:41 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ typedef struct s_ray
 	t_veci	step;
 	int		hit;
 	int		side;
+	int		draw_point[2];
+	int		line_height;
+	double	wall_x;
 }	t_ray;
 
 typedef struct s_map
