@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 00:52:31 by lray              #+#    #+#             */
-/*   Updated: 2023/12/30 02:14:26 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/09 23:14:49 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,4 @@ void	ctx_show(t_ctx *ctx)
 {
 	printf("ctx : %p\n", ctx);
 	printf("ctx->mlx : %p\n", ctx->mlx);
-
 }
