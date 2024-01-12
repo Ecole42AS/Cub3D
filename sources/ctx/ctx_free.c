@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 00:10:40 by lray              #+#    #+#             */
-/*   Updated: 2024/01/08 09:16:15 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/12 09:08:59 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ctx_free(t_ctx *ctx)
 	int	i;
 
 	i = 0;
-	while (i < 4)
+	while (i <= 4)
 	{
 		img_free(ctx, ctx->textures[i]);
 		++i;

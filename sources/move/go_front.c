@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:05:26 by lray              #+#    #+#             */
-/*   Updated: 2024/01/09 11:12:27 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/10 15:26:46 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ void	go_front(t_ctx *ctx)
 
 	new_x = ctx->player.pos.x + ctx->player.dir.x * MOVE_SPEED;
 	new_y = ctx->player.pos.y + ctx->player.dir.y * MOVE_SPEED;
-	ctx->player.pos.x = new_x;
-	ctx->player.pos.y = new_y;
+	if (move_is_valide(ctx, new_x, new_y))
+	{
+		ctx->player.pos.x = new_x;
+		ctx->player.pos.y = new_y;
+	}
 }
