@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
+/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 10:44:13 by lray              #+#    #+#             */
-/*   Updated: 2024/01/09 11:05:07 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/13 13:40:51 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@
 # include <errno.h>
 # include "../minilibx/linux/mlx.h"
 
-# include "structures.h"
-# include "mlx_utils.h"
-# include "colors.h"
-# include "events.h"
-# include "ctx.h"
-# include "win.h"
-# include "gameloop.h"
-# include "player.h"
-# include "ray.h"
-# include "move.h"
+#include "structures.h"
+#include "mlx_utils.h"
+#include "colors.h"
+#include "events.h"
+#include "ctx.h"
+#include "win.h"
+#include "gameloop.h"
+#include "player.h"
+#include "ray.h"
+#include "parsing.h"
 
 typedef struct s_mlx_data
 {
@@ -43,14 +43,6 @@ typedef struct s_mlx_data
 	int		bpp;
 	int		line_length;
 	int		endian;
-}	t_mlx_data;
-
-typedef struct s_parsing
-{
-	char	**parsed_lines;
-}			t_parsing;
-
-char	*gnl_unempty(int fd);
-int		open_file(char *file);
+}			t_mlx_data;
 
 #endif

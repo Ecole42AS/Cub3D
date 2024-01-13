@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 09:16:20 by astutz            #+#    #+#             */
-/*   Updated: 2023/11/04 08:07:23 by astutz           ###   ########.fr       */
+/*   Updated: 2024/01/13 13:16:40 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,38 @@ char *gnl_unempty(int fd)
 }
 
 /*Return fd, -1 if open failed*/
-int	open_file(char *file)
+int	open_file(char *file_path)
 {
-	int fd = open(file, O_RDONLY);
+	int fd = open(file_path, O_RDONLY);
 
 	if (fd == -1)
 		ft_putstr_fd(strerror(errno), 2);
 	return (fd);
+}
+
+void free_split(char **split_result)
+{
+	int i;
+
+	i = 0;
+    if (split_result)
+    {
+        while (split_result[i] != NULL)
+        {
+            free(split_result[i]);
+			i++;
+        }
+        free(split_result);
+    }
+}
+
+void	free_texture(t_texture *texture)
+{
+	free(texture->NO_texture_path);
+	free(texture->SO_texture_path);
+	free(texture->WE_texture_path);
+	free(texture->EA_texture_path);
+	free(texture);
 }
 
 // int	parser(char *file)
