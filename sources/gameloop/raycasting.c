@@ -6,53 +6,54 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/02 17:01:13 by lray              #+#    #+#             */
-/*   Updated: 2024/01/06 09:49:36 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/09 23:04:14 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void	draw_verline(t_image *frame, int col, int start, int end, int color);
+static int	draw_tex_verline(t_image *img, t_ray *ray, int x, t_image *texture);
 
 t_image	*raycasting(t_ctx *ctx, t_image *frame)
 {
 	int		x;
 	t_ray	ray;
-	int		line_heigth;
-	int		draw_start;
-	int		draw_end;
+	t_image	*texture;
 
 	x = 0;
-	line_heigth = 0;
 	while (x < ctx->win.width)
 	{
 		ray_init(ctx, &ray, x);
 		ray_dda(ctx, &ray);
-		ray_calculate_perp_wall_dist(&ray);
-		line_heigth = (int)(ctx->win.height / ray.perp_wall_dist);
-		draw_start = -line_heigth / 2 + ctx->win.height / 2;
-		if (draw_start < 0)
-			draw_start = 0;
-		draw_end = line_heigth / 2 + ctx->win.height / 2;
-		if (draw_end >= ctx->win.height)
-			draw_end = ctx->win.height - 1;
-		if (ray.side == 0)
-			draw_verline(frame, x, draw_start, draw_end, CLR_DARK_GRAY);
-		else
-			draw_verline(frame, x, draw_start, draw_end, CLR_GRAY);
+		ray_calculate_perp_wall_dist(ctx, &ray);
+		ray_calculate_line_height(ctx, &ray);
+		ray_calculate_draw_points(ctx, &ray);
+		ray_calculate_wall_x(ctx, &ray);
+		texture = ctx->textures[ray.hit];
+		if (draw_tex_verline(frame, &ray, x, texture) != 0)
+			return (NULL);
 		++x;
 	}
 	return (frame);
 }
 
-static void	draw_verline(t_image *frame, int col, int start, int end, int color)
+static int	draw_tex_verline(t_image *img, t_ray *ray, int x, t_image *texture)
 {
 	int	y;
+	int	tex_x;
+	int	tex_y;
+	int	color;
+	int	d;
 
-	y = start;
-	while (y < end)
+	tex_x = (int)(ray->wall_x * (double)texture->width);
+	y = ray->draw_point[0];
+	while (y < ray->draw_point[1])
 	{
-		put_pixel(frame, col, y, color);
+		d = y * 256 - img->height * 128 + ray->line_height * 128;
+		tex_y = ((d * texture->height) / ray->line_height) / 256;
+		color = get_pixel(texture, tex_x, tex_y);
+		put_pixel(img, x, y, color);
 		++y;
 	}
+	return (0);
 }

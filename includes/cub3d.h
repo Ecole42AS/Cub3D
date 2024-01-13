@@ -1,15 +1,27 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/09 10:44:13 by lray              #+#    #+#             */
+/*   Updated: 2024/01/13 13:40:51 by astutz           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CUB3D_H
 # define CUB3D_H
 
-#define DISPLAY_WIDTH 800
-#define DISPLAY_HEIGHT 600
+# define DISPLAY_WIDTH 800
+# define DISPLAY_HEIGHT 600
 
-#include "../libft/libft.h"
-#include <unistd.h>
-#include <stdio.h>
-#include <fcntl.h>
-#include <errno.h>
-#include "../minilibx/linux/mlx.h"
+# include "../libft/libft.h"
+# include <unistd.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <errno.h>
+# include "../minilibx/linux/mlx.h"
 
 #include "structures.h"
 #include "mlx_utils.h"

@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 00:03:00 by lray              #+#    #+#             */
-/*   Updated: 2024/01/04 00:21:05 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/09 23:13:33 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,3 @@ void	player_init(t_player *player, t_vec pos, t_vec dir, t_vec cam)
 	player->cam.x = cam.x;
 	player->cam.y = cam.y;
 }
-

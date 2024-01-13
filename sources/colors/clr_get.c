@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/19 02:07:46 by lray              #+#    #+#             */
-/*   Updated: 2023/12/19 02:12:23 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/09 23:07:05 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,3 @@ unsigned char	clr_get_b(int trgb)
 {
 	return (((unsigned int *)&trgb)[0]);
 }
-

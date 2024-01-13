@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/29 14:44:26 by astutz            #+#    #+#             */
-/*   Updated: 2023/09/29 14:50:36 by astutz           ###   ########.fr       */
+/*   Updated: 2024/01/09 10:48:15 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ size_t	ft_strlen(const char *s)
 }
 
 char	*ft_strchr(const char *s, int c)
-{	
+{
 	while (*s)
 	{
 		if (*s == (char)c)

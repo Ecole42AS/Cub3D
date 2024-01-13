@@ -6,7 +6,7 @@
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 16:07:57 by lray              #+#    #+#             */
-/*   Updated: 2024/01/09 14:29:48 by astutz           ###   ########.fr       */
+/*   Updated: 2024/01/13 13:41:17 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,9 @@ typedef struct s_ray
 	t_veci	step;
 	int		hit;
 	int		side;
+	int		draw_point[2];
+	int		line_height;
+	double	wall_x;
 }	t_ray;
 
 typedef struct s_map
@@ -86,7 +89,7 @@ typedef struct s_ctx
 	t_win		win;
 	t_map		map;
 	t_player	player;
-	t_image		*background;
+	t_image		*textures[5];
 }	t_ctx;
 
 #endif

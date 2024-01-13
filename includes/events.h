@@ -6,12 +6,13 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 20:47:37 by lray              #+#    #+#             */
-/*   Updated: 2023/12/30 00:46:06 by lray             ###   ########.fr       */
+/*   Updated: 2024/01/09 11:11:30 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EVENTS_H
 # define EVENTS_H
+
 enum e_events
 {
 	ON_KEYDOWN = 2,
@@ -27,10 +28,10 @@ typedef struct s_vars
 {
 	void	*mlx;
 	void	*win;
-} t_vars;
+}	t_vars;
 
+# ifdef __APPLE__
 
-#ifdef __APPLE__
 enum e_key
 {
 	KEY_ESC = 53,
@@ -43,7 +44,8 @@ enum e_key
 	KEY_LEFT = 123,
 	KEY_RIGHT = 124,
 };
-#else
+# else
+
 enum e_key
 {
 	KEY_ESC = 65307,
@@ -56,7 +58,7 @@ enum e_key
 	KEY_LEFT = 65361,
 	KEY_RIGHT = 65363,
 };
-#endif
+# endif
 
 int	key_handler(int keycode, void *param);
 int	close_handler(t_ctx *ctx);
