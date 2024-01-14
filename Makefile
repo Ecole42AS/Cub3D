@@ -1,6 +1,7 @@
 SRCS	=	sources/parsing/parsing_utils.c 			\
 			sources/parsing/textures.c 					\
 			sources/parsing/colors.c 					\
+			sources/parsing/map.c 						\
 			sources/main.c								\
 			sources/mlx_utils/put_pixel.c				\
 			sources/mlx_utils/get_pixel.c				\

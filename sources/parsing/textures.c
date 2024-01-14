@@ -6,7 +6,7 @@
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:21:50 by astutz            #+#    #+#             */
-/*   Updated: 2024/01/13 13:28:16 by astutz           ###   ########.fr       */
+/*   Updated: 2024/01/14 16:26:59 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,19 @@ void parse_texture_paths(t_texture *texture, int fd)
     free(line);
 }
 
+void print_map(char **map, t_vec_map map_size) {
+    printf("Printed Map:\n");
+    for (int i = 0; i < map_size.y; i++) {
+        for (int j = 0; j < map_size.x; j++) {
+            printf("%c", map[i][j]);
+        }
+        printf("\n");
+    }
+}
+
 // int main()
 // {
+// 	char **map;
 //     char *file_path = "/home/alex/Ecole42/Cub3D/maps/test_map.cub";
 //     int fd = open_file(file_path);
 
@@ -66,6 +77,9 @@ void parse_texture_paths(t_texture *texture, int fd)
 //         close(fd);
 //         return 1;
 //     }
+	
+// 	t_vec_map	map_size;
+
 
 //     parse_texture_paths(texture, fd);
 // 	parse_colors(fd, color);
@@ -78,6 +92,21 @@ void parse_texture_paths(t_texture *texture, int fd)
 // 	printf("RGB Floor: %d, %d, %d\n", color->rgb_floor[0], color->rgb_floor[1], color->rgb_floor[2]);
 //     printf("RGB Ceiling: %d, %d, %d\n", color->rgb_ceiling[0], color->rgb_ceiling[1], color->rgb_ceiling[2]);	
 
+// 	map = map_parsing(fd, file_path);
+// 	if(!map)
+// 	{
+// 		printf("map parsing error!");
+// 		exit (1);
+// 	}
+// 	else if(check_map_validity(map) == 1)
+// 	{
+// 		printf("map validity error!");
+// 		exit (1);
+// 	}
+// 	print_map(map, map_size);
+
+	
+// 	free_map(map);
 // 	free(color);
 //     free_texture(texture);
 //     close(fd);

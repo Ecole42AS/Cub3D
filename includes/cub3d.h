@@ -6,7 +6,7 @@
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 10:44:13 by lray              #+#    #+#             */
-/*   Updated: 2024/01/13 13:40:51 by astutz           ###   ########.fr       */
+/*   Updated: 2024/01/13 18:12:15 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@
 #include "player.h"
 #include "ray.h"
 #include "parsing.h"
+#include "move.h"
+
 
 typedef struct s_mlx_data
 {

@@ -6,7 +6,7 @@
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 09:15:29 by astutz            #+#    #+#             */
-/*   Updated: 2024/01/13 13:41:32 by astutz           ###   ########.fr       */
+/*   Updated: 2024/01/14 16:28:06 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,16 @@ char	*tex_paths[] = {
 	"assets/colorstone.xpm",	//OUEST
 };
 
-int main(void)
+int main(int ac, char **av)
 {
+	(void)ac;
+	(void)av;
+	// if (ac != 2)
+	// {
+	// 	ft_putstr_fd("Invalid arguments\n", 2);
+	// 	return (1);
+	// }
 	t_ctx ctx;
-
 	ctx_init(&ctx, WIN_WIDTH, WIN_HEIGHT, WIN_NAME);
 	if (ctx_init_textures(&ctx, (unsigned int[2]){CLR_CYAN, CLR_GREEN}, tex_paths) != 0)
 	{

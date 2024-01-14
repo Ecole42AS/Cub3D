@@ -6,7 +6,7 @@
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 09:16:20 by astutz            #+#    #+#             */
-/*   Updated: 2024/01/13 13:16:40 by astutz           ###   ########.fr       */
+/*   Updated: 2024/01/14 15:27:42 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,32 @@ void	free_texture(t_texture *texture)
 	free(texture->WE_texture_path);
 	free(texture->EA_texture_path);
 	free(texture);
+}
+
+void free_map(char **map)
+{
+    int i;
+
+    if (!map)
+        return;
+
+    i = -1;
+    while (map[++i])
+        free(map[i]);
+    free(map);
+}
+
+
+void color_init(t_color *color)
+{
+	int i;
+
+	i = -1;
+    while (++i < 4)
+    {
+        color->rgb_floor[i] = 0;
+        color->rgb_ceiling[i] = 0;
+    }
 }
 
 // int	parser(char *file)
