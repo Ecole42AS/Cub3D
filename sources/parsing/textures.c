@@ -6,7 +6,7 @@
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:21:50 by astutz            #+#    #+#             */
-/*   Updated: 2024/01/14 16:26:59 by astutz           ###   ########.fr       */
+/*   Updated: 2024/01/21 11:56:06 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,28 @@ void parse_texture_paths(t_texture *texture, int fd)
 
     line = gnl_unempty(fd);
     split_result = ft_split(line, ' ');// vérifier que le split contient bien 2 éléments
-    if (!ft_strcmp(split_result[0], "NO"))
+    if (!ft_strcmp(split_result[0], "NO") && !split_result[2])
         texture->NO_texture_path = ft_strdup(split_result[1]);
     free(line);
     free_split(split_result);
 
     line = gnl_unempty(fd);
     split_result = ft_split(line, ' ');
-    if (!ft_strcmp(split_result[0], "SO"))
+    if (!ft_strcmp(split_result[0], "SO") && !split_result[2])
         texture->SO_texture_path = ft_strdup(split_result[1]);
     free(line);
     free_split(split_result);
 
     line = gnl_unempty(fd);
     split_result = ft_split(line, ' ');
-    if (!ft_strcmp(split_result[0], "WE"))
+    if (!ft_strcmp(split_result[0], "WE") && !split_result[2])
         texture->WE_texture_path = ft_strdup(split_result[1]);
     free(line);
     free_split(split_result);
 
     line = gnl_unempty(fd);
     split_result = ft_split(line, ' ');
-    if (!ft_strcmp(split_result[0], "EA"))
+    if (!ft_strcmp(split_result[0], "EA") && !split_result[2])
         texture->EA_texture_path = ft_strdup(split_result[1]);
     free_split(split_result);
     free(line);

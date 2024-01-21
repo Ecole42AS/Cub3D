@@ -6,7 +6,7 @@
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 16:07:57 by lray              #+#    #+#             */
-/*   Updated: 2024/01/14 13:46:13 by astutz           ###   ########.fr       */
+/*   Updated: 2024/01/21 12:13:14 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,20 @@ typedef struct s_ctx
 	t_player	player;
 	t_image		*textures[5];
 }	t_ctx;
+
+typedef struct s_texture
+{
+	char	*NO_texture_path;
+	char	*SO_texture_path;
+	char	*WE_texture_path;
+	char	*EA_texture_path;
+}			t_texture;
+
+/*voir avec luca si il faut rajouter le t de trgb*/
+typedef struct s_color
+{
+    unsigned int	rgb_floor[4];
+    unsigned int	rgb_ceiling[4];
+} 		t_color;
 
 #endif

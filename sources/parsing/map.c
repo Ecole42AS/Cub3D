@@ -6,21 +6,21 @@
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 12:17:10 by astutz            #+#    #+#             */
-/*   Updated: 2024/01/14 16:26:45 by astutz           ###   ########.fr       */
+/*   Updated: 2024/01/21 12:11:15 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-/*Voir pour mettre 	t_vec_map	*map_size; dans les param de la fonction*/
+/*Voir pour mettre 	t_veci	*map_size; dans les param de la fonction*/
 char **map_parsing(int fd, char	*file_path)
 {
-	t_vec_map	*map_size;
+	t_veci		*map_size;
 	int			map_line_number;
 	char 		**map;
 	char		*line;
 	
-	map_size = ft_malloc_failed_msg(1, sizeof(t_vec_map));
+	map_size = ft_malloc_failed_msg(1, sizeof(t_veci));
 	map_line_number = get_map_line_number(file_path);
 	line = gnl_unempty(fd);
 	if (!line)
@@ -64,7 +64,7 @@ int	get_map_line_number(char *file_path)
 
 int	is_map_closed(char **map)
 {
-	t_vec_map	p;
+	t_veci	p;
 	char		cell;
 
 	p.y = -1;
@@ -94,7 +94,7 @@ at [%d, %d]\n", p.x + 1, p.y + 1);
 
 int	check_map_validity(char **map)
 {
-	t_vec_map	pos;
+	t_veci	pos;
 	char		cell;
 	int			player_count;
 
