@@ -6,7 +6,7 @@
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:21:50 by astutz            #+#    #+#             */
-/*   Updated: 2024/01/21 11:56:06 by astutz           ###   ########.fr       */
+/*   Updated: 2024/01/21 13:11:45 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void parse_texture_paths(t_texture *texture, int fd)
     free(line);
 }
 
-void print_map(char **map, t_vec_map map_size) {
+void print_map(char **map, t_veci map_size) {
     printf("Printed Map:\n");
     for (int i = 0; i < map_size.y; i++) {
         for (int j = 0; j < map_size.x; j++) {
