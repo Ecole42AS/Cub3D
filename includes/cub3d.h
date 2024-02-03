@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 10:44:13 by lray              #+#    #+#             */
-/*   Updated: 2024/01/13 18:12:15 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/03 14:06:16 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,17 @@
 # include <errno.h>
 # include "../minilibx/linux/mlx.h"
 
-#include "structures.h"
-#include "mlx_utils.h"
-#include "colors.h"
-#include "events.h"
-#include "ctx.h"
-#include "win.h"
-#include "gameloop.h"
-#include "player.h"
-#include "ray.h"
-#include "parsing.h"
-#include "move.h"
-
+# include "structures.h"
+# include "mlx_utils.h"
+# include "colors.h"
+# include "events.h"
+# include "ctx.h"
+# include "win.h"
+# include "gameloop.h"
+# include "player.h"
+# include "ray.h"
+# include "parsing.h"
+# include "move.h"
 
 typedef struct s_mlx_data
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 09:16:20 by astutz            #+#    #+#             */
-/*   Updated: 2024/01/21 13:44:58 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/03 14:08:15 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char *gnl_unempty(int fd)
 int	open_file(char *file_path)
 {
 	int fd;
-	
+
 	if (ft_strlen(file_path) <= 4 || ft_strcmp(file_path + ft_strlen(file_path) - 4, ".cub") != 0)
 	{
     	printf("Error: '%s' should have a '.cub' extension\n", file_path);
@@ -60,10 +60,10 @@ void free_split(char **split_result)
 
 void	free_texture(t_texture *texture)
 {
-	free(texture->NO_texture_path);
-	free(texture->SO_texture_path);
-	free(texture->WE_texture_path);
-	free(texture->EA_texture_path);
+	free(texture->no_texture_path);
+	free(texture->so_texture_path);
+	free(texture->we_texture_path);
+	free(texture->ea_texture_path);
 	free(texture);
 }
 
@@ -128,7 +128,7 @@ void color_init(t_color *color)
 	// 	}
 
 	//     char *line;
-	//     while ((line = gnl_unempty(fd)) != NULL) 
+	//     while ((line = gnl_unempty(fd)) != NULL)
 	// 	{
 	// 		if (line[strlen(line) - 1] == '\n')
 	//             line[strlen(line) - 1] = '\0';

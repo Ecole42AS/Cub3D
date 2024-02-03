@@ -6,12 +6,14 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 20:47:37 by lray              #+#    #+#             */
-/*   Updated: 2024/01/09 11:11:30 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/03 13:57:08 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EVENTS_H
 # define EVENTS_H
+
+#include "ctx.h"
 
 enum e_events
 {
@@ -36,8 +38,8 @@ enum e_key
 {
 	KEY_ESC = 53,
 	KEY_W = 13,
-	KEY_A = 1,
-	KEY_S = 0,
+	KEY_A = 0,
+	KEY_S = 1,
 	KEY_D = 2,
 	KEY_UP = 126,
 	KEY_DOWN = 125,

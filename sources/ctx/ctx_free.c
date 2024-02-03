@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 00:10:40 by lray              #+#    #+#             */
-/*   Updated: 2024/01/12 09:08:59 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/03 13:41:34 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ctx_free(t_ctx *ctx)
 		++i;
 	}
 	win_free(&ctx->win);
-	mlx_destroy_display(ctx->mlx);
+	//mlx_destroy_display(ctx->mlx);
 	free(ctx->mlx);
 	ctx->mlx = NULL;
 	ctx = NULL;

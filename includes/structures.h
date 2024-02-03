@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 16:07:57 by lray              #+#    #+#             */
-/*   Updated: 2024/02/03 10:58:32 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/03 14:10:42 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,17 +95,17 @@ typedef struct s_ctx
 
 typedef struct s_texture
 {
-	char	*NO_texture_path;
-	char	*SO_texture_path;
-	char	*WE_texture_path;
-	char	*EA_texture_path;
+	char	*no_texture_path;
+	char	*so_texture_path;
+	char	*we_texture_path;
+	char	*ea_texture_path;
 }			t_texture;
 
 typedef struct s_color
 {
-    unsigned int	rgb_floor[4];
-    unsigned int	rgb_ceiling[4];
-} 		t_color;
+	unsigned int	rgb_floor[4];
+	unsigned int	rgb_ceiling[4];
+}		t_color;
 
 typedef struct s_parsing_data
 {

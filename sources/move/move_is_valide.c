@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:17:40 by lray              #+#    #+#             */
-/*   Updated: 2024/01/10 15:36:04 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/03 14:13:03 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	move_is_valide(t_ctx *ctx, double new_x, double new_y)
 
 static int	is_valide_new_x(t_ctx *ctx, double new_x)
 {
-	if (new_x > 0 && new_x < ctx->map.width - 1 )
+	if (new_x > 0 && new_x < ctx->map.width - 1)
 		return (1);
 	return (0);
 }

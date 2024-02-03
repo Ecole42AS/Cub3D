@@ -36,8 +36,7 @@ SRCS	=	sources/parsing/parsing_utils.c 			\
 			sources/move/go_right.c						\
 			sources/move/rotate_left.c					\
 			sources/move/rotate_right.c					\
-			sources/move/move_is_valide.c					\
-			sources/init.c
+			sources/move/move_is_valide.c
 
 NAME	=	cub3D
 

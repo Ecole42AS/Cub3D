@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:31:21 by astutz            #+#    #+#             */
-/*   Updated: 2024/01/14 15:35:55 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/03 14:13:51 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ le fichier, le programme doit quitter et renvoyer "Error\n" suivi d’un message
 d’erreur explicite de votre choix.*/
 void	parse_colors(int fd, t_color *color)
 {
-	char **split_result;
-	char **split_colors;
-	char *line;
-	
+	char	**split_result;
+	char	**split_colors;
+	char	*line;
+
 	line = gnl_unempty(fd);
 	split_result = ft_split(line, ' ');
 	split_colors = ft_split(split_result[1], ',');

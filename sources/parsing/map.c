@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 12:17:10 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/03 10:42:54 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/03 14:14:28 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char **map_parsing(int fd, char	*file_path)
 	int			map_line_number;
 	char 		**map;
 	char		*line;
-	
+
 	map_size = ft_malloc_failed_msg(1, sizeof(t_veci));
 	map_line_number = get_map_line_number(file_path);
 	line = gnl_unempty(fd);
