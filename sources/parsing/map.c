@@ -6,7 +6,7 @@
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 12:17:10 by astutz            #+#    #+#             */
-/*   Updated: 2024/01/21 12:16:40 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/03 10:42:54 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int	get_map_line_number(char *file_path)
 int	is_map_closed(char **map)
 {
 	t_veci	p;
-	char		cell;
+	char	cell;
 
 	p.y = -1;
 	while (map[++p.y] != NULL)
@@ -94,7 +94,7 @@ at [%d, %d]\n", p.x + 1, p.y + 1);
 
 int	check_map_validity(char **map)
 {
-	t_veci	pos;
+	t_veci		pos;
 	char		cell;
 	int			player_count;
 
