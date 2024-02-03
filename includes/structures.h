@@ -6,7 +6,7 @@
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 16:07:57 by lray              #+#    #+#             */
-/*   Updated: 2024/01/13 13:41:17 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/03 10:58:32 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,10 @@ typedef struct s_ray
 
 typedef struct s_map
 {
-	int	width;
-	int	height;
-	int	map[24][24];
+	int		width;
+	int		height;
+	int		map[24][24];
+	char	**parsed_map;
 }	t_map;
 
 typedef struct s_player
@@ -91,5 +92,26 @@ typedef struct s_ctx
 	t_player	player;
 	t_image		*textures[5];
 }	t_ctx;
+
+typedef struct s_texture
+{
+	char	*NO_texture_path;
+	char	*SO_texture_path;
+	char	*WE_texture_path;
+	char	*EA_texture_path;
+}			t_texture;
+
+typedef struct s_color
+{
+    unsigned int	rgb_floor[4];
+    unsigned int	rgb_ceiling[4];
+} 		t_color;
+
+typedef struct s_parsing_data
+{
+	t_color		*color;
+	t_texture	*texture;
+	t_map		*map;
+}				t_parsing_data;
 
 #endif

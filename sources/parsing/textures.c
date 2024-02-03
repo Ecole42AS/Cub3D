@@ -6,84 +6,69 @@
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:21:50 by astutz            #+#    #+#             */
-/*   Updated: 2024/01/13 13:28:16 by astutz           ###   ########.fr       */
+/*   Updated: 2024/01/27 10:06:25 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void parse_texture_paths(t_texture *texture, int fd)
+
+// if (parse_texture_paths(..) == 1)
+// {
+// 	free(line);
+// 	free_split;
+// 	free_texture;
+// }
+
+int	parse_texture_paths(t_texture *texture, int fd)
 {
     char *line;
     char **split_result;
 
     line = gnl_unempty(fd);
-    split_result = ft_split(line, ' ');// vérifier que le split contient bien 2 éléments
-    if (!ft_strcmp(split_result[0], "NO"))
+	if (!line)
+		return (1);
+    split_result = ft_split(line, ' ');
+    if (!ft_strcmp(split_result[0], "NO") && !split_result[2] && !split_result)
         texture->NO_texture_path = ft_strdup(split_result[1]);
+	else
+		return (1);
     free(line);
     free_split(split_result);
 
-    line = gnl_unempty(fd);
+	line = gnl_unempty(fd);
+	if (!line)
+		return (1);
     split_result = ft_split(line, ' ');
-    if (!ft_strcmp(split_result[0], "SO"))
+    if (!ft_strcmp(split_result[0], "SO") && !split_result[2] && !split_result)
         texture->SO_texture_path = ft_strdup(split_result[1]);
+	else
+		return (1);
     free(line);
     free_split(split_result);
 
-    line = gnl_unempty(fd);
+	line = gnl_unempty(fd);
+	if (!line)
+		return (1);
     split_result = ft_split(line, ' ');
-    if (!ft_strcmp(split_result[0], "WE"))
+    if (!ft_strcmp(split_result[0], "WE") && !split_result[2] && !split_result)
         texture->WE_texture_path = ft_strdup(split_result[1]);
+	else
+		return (1);
     free(line);
     free_split(split_result);
 
-    line = gnl_unempty(fd);
+	line = gnl_unempty(fd);
+	if (!line)
+		return (1);
     split_result = ft_split(line, ' ');
-    if (!ft_strcmp(split_result[0], "EA"))
+    if (!ft_strcmp(split_result[0], "EA") && !split_result[2] && !split_result)
         texture->EA_texture_path = ft_strdup(split_result[1]);
-    free_split(split_result);
+	else
+		return (1);
     free(line);
+    free_split(split_result);
 }
-
-// int main()
-// {
-//     char *file_path = "/home/alex/Ecole42/Cub3D/maps/test_map.cub";
-//     int fd = open_file(file_path);
-
-//     t_texture *texture = ft_calloc(1, sizeof(t_texture));
-//     if (!texture)
-//     {
-//         perror("Erreur lors de l'allocation de la texture");
-//         close(fd);
-//         return 1;
-//     }
-
-// 	t_color *color = ft_calloc(1, sizeof(t_color));
-// 	if (!color)
-//     {
-//         perror("Erreur lors de l'allocation de la couleur");
-//         close(fd);
-//         return 1;
-//     }
-
-//     parse_texture_paths(texture, fd);
-// 	parse_colors(fd, color);
-	
-//     printf("Texture nord: %s\n", texture->NO_texture_path);
-//     printf("Texture sud: %s\n", texture->SO_texture_path);
-//     printf("Texture ouest: %s\n", texture->WE_texture_path);
-//     printf("Texture est: %s\n", texture->EA_texture_path);
-
-// 	printf("RGB Floor: %d, %d, %d\n", color->rgb_floor[0], color->rgb_floor[1], color->rgb_floor[2]);
-//     printf("RGB Ceiling: %d, %d, %d\n", color->rgb_ceiling[0], color->rgb_ceiling[1], color->rgb_ceiling[2]);	
-
-// 	free(color);
-//     free_texture(texture);
-//     close(fd);
-
-//     return 0;
-// }
 
 
 /* --------------------------     code to delete if not usefull    ------------------------------*/
@@ -138,3 +123,46 @@ void parse_texture_paths(t_texture *texture, int fd)
 	// 	close(fd);
 	// 	return 1;
 	// } 
+
+// ------------------------------Code refracto--------------------------------------
+// int parse_and_set_texture(t_texture *texture, int fd, const char *prefix) {
+//     char *line = gnl_unempty(fd);
+//     if (!line)
+//         return 1;
+
+//     char **split_result = ft_split(line, ' ');
+//     free(line);
+
+//     if (!split_result || ft_strcmp(split_result[0], prefix) || split_result[2]) {
+//         free_split(split_result);
+//         return 1;
+//     }
+
+//     // Utilisation de la fonction auxiliaire pour définir le chemin de texture
+//     texture_path_setter(texture, split_result[1]);
+
+//     free_split(split_result);
+//     return 0;
+// }
+
+// void texture_path_setter(t_texture *texture, const char *path) {
+//     if (!strcmp(prefix, "NO"))
+//         texture->NO_texture_path = ft_strdup(path);
+//     else if (!strcmp(prefix, "SO"))
+//         texture->SO_texture_path = ft_strdup(path);
+//     else if (!strcmp(prefix, "WE"))
+//         texture->WE_texture_path = ft_strdup(path);
+//     else if (!strcmp(prefix, "EA"))
+//         texture->EA_texture_path = ft_strdup(path);
+// }
+
+// int parse_texture_paths(t_texture *texture, int fd) {
+//     const char *prefixes[] = { "NO", "SO", "WE", "EA" };
+
+//     for (int i = 0; i < sizeof(prefixes) / sizeof(prefixes[0]); ++i) {
+//         if (parse_and_set_texture(texture, fd, prefixes[i]) != 0)
+//             return 1;
+//     }
+
+//     return 0;
+// }
