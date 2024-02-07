@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
+/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:21:50 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/03 14:09:56 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/07 15:53:09 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
+// Hello World
 
 // if (parse_texture_paths(..) == 1)
 // {
