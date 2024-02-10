@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 04:21:34 by lray              #+#    #+#             */
-/*   Updated: 2024/02/10 20:46:42 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/10 21:13:34 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,14 @@
 
 static void	make_background(t_ctx *ctx, unsigned int c1, unsigned int c2);
 
-int	ctx_init_textures(t_ctx *ctx, t_color *colors, char **tex_path)
+int	ctx_init_textures(t_ctx *ctx, t_color *colors, t_texture *texture)
 {
-	int	i;
-
 	ctx->textures[0] = img_create(ctx->mlx, ctx->win.width, ctx->win.height);
-	make_background(ctx, colors->rgb_floor, *colors->rgb_ceiling);
-	i = 1;
-	while (i <= 4)
-	{
-		ctx->textures[i] = img_load(ctx->mlx, tex_path[i - 1]);
-		if (!ctx->textures[i])
-			return (i);
-		++i;
-	}
+	make_background(ctx, colors->rgb_floor, colors->rgb_ceiling);
+	ctx->textures[1] = img_load(ctx->mlx, texture->no_texture_path);
+	ctx->textures[2] = img_load(ctx->mlx, texture->so_texture_path);
+	ctx->textures[3] = img_load(ctx->mlx, texture->ea_texture_path);
+	ctx->textures[4] = img_load(ctx->mlx, texture->we_texture_path);
 	return (0);
 }
 

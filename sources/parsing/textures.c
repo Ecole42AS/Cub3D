@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:21:50 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/10 16:25:08 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/10 21:13:07 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,13 +148,26 @@ int parse_and_set_texture(t_texture *texture, int fd, const char *prefix) {
 
 void texture_path_setter(t_texture *texture, const char *path, const char *prefix) {
     if (!strcmp(prefix, "NO"))
+	{
         texture->no_texture_path = ft_strdup(path);
+		texture->no_texture_path[ft_strlen(path) - 1] = '\0';
+	}
     else if (!strcmp(prefix, "SO"))
+	{
         texture->so_texture_path = ft_strdup(path);
+		texture->so_texture_path[ft_strlen(path) - 1] = '\0';
+	}
     else if (!strcmp(prefix, "WE"))
+	{
         texture->we_texture_path = ft_strdup(path);
+		texture->we_texture_path[ft_strlen(path) - 1] = '\0';
+
+	}
     else if (!strcmp(prefix, "EA"))
+	{
         texture->ea_texture_path = ft_strdup(path);
+		texture->ea_texture_path[ft_strlen(path) - 1] = '\0';
+	}
 }
 
 int parse_texture_paths(t_texture *texture, int fd) {
