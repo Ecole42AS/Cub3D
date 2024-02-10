@@ -2,12 +2,14 @@ SRCS	=	sources/parsing/parsing_utils.c 			\
 			sources/parsing/textures.c 					\
 			sources/parsing/colors.c 					\
 			sources/parsing/map.c 						\
+			sources/parsing/parsing_init.c				\
+			sources/parsing/parser.c					\
 			sources/main.c								\
 			sources/mlx_utils/put_pixel.c				\
 			sources/mlx_utils/get_pixel.c				\
 			sources/mlx_utils/put_img_to_img.c			\
 			sources/mlx_utils/img_create.c				\
-      		sources/mlx_utils/get_keycode.c     		\
+			sources/mlx_utils/get_keycode.c     		\
 			sources/mlx_utils/img_load.c				\
 			sources/mlx_utils/img_free.c				\
 			sources/mlx_utils/get_keycode.c				\
@@ -46,7 +48,7 @@ CC		=	gcc
 
 RM      =	rm -f
 
-CFLAGS	=	-Wall -Wextra -Werror -g -fsanitize=address,undefined
+CFLAGS	=	-Wall -Wextra -Werror -g
 
 # -fsanitize=address,undefined
 

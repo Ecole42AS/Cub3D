@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_is_valide.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
+/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:17:40 by lray              #+#    #+#             */
-/*   Updated: 2024/02/03 14:13:03 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/10 14:24:47 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,21 +33,21 @@ int	move_is_valide(t_ctx *ctx, double new_x, double new_y)
 
 static int	is_valide_new_x(t_ctx *ctx, double new_x)
 {
-	if (new_x > 0 && new_x < ctx->map.width - 1)
+	if (new_x > 0 && new_x < ctx->map.map_size.x - 1)
 		return (1);
 	return (0);
 }
 
 static int	is_valide_new_y(t_ctx *ctx, double new_y)
 {
-	if (new_y > 0 && new_y < ctx->map.height - 1)
+	if (new_y > 0 && new_y < ctx->map.map_size.y - 1)
 		return (1);
 	return (0);
 }
 
 static int	is_wall(t_ctx *ctx, double new_x, double new_y)
 {
-	if (ctx->map.map[(int)new_x][(int)new_y] == 1)
+	if (ctx->map.parsed_map[(int)new_x][(int)new_y] == 1)
 		return (1);
 	return (0);
 }

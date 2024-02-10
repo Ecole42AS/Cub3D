@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
+/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 09:16:20 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/03 14:08:15 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/10 14:05:22 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int	open_file(char *file_path)
 
 	if (ft_strlen(file_path) <= 4 || ft_strcmp(file_path + ft_strlen(file_path) - 4, ".cub") != 0)
 	{
-    	printf("Error: '%s' should have a '.cub' extension\n", file_path);
-    	return (-1);
+		printf("Error: '%s' should have a '.cub' extension\n", file_path);
+		return (-1);
 	}
 	fd = open(file_path, O_RDONLY);
 	if (fd == -1)
@@ -81,62 +81,14 @@ void free_map(char **map)
 }
 
 
-void color_init(t_color *color)
-{
-	int i;
-
-	i = -1;
-    while (++i < 4)
-    {
-        color->rgb_floor[i] = 0;
-        color->rgb_ceiling[i] = 0;
-    }
-}
-
-// int	parser(char *file)
+// void color_init(t_color *color)
 // {
-// 	char **tmp;
-// 	char *line;
-// 	int tab_size;
-// 	int string_size;
-//     int fd;
+// 	int i;
 
-// 	tmp = NULL;
-
-// 	fd = open(file, O_RDONLY);
-// 	if (fd == -1)
-// 	{
-// 		write(2, strerror(errno), ft_strlen(errno));
-// 		return(1);
-// 	}
-// 	tmp = ft_malloc_failed_msg(tab_size, sizeof(char *));
-// 	*tmp = ft_malloc_failed_msg(string_size, sizeof(char));
-// 	while (get_next_line(fd))
-// 	{
-
-// 	}
+// 	i = -1;
+//     while (++i < 4)
+//     {
+//         color->rgb_floor[i] = 0;
+//         color->rgb_ceiling[i] = 0;
+//     }
 // }
-
-	// int main(int ac, char **av)
-	// {
-	//     int fd = open("/Users/astutz/42cursus/cub3D/test.txt", O_RDONLY);
-
-	// 	if (fd == -1)
-	// 	{
-	// 		ft_putstr_fd(strerror(errno), 2);
-	// 		return(1);
-	// 	}
-
-	//     char *line;
-	//     while ((line = gnl_unempty(fd)) != NULL)
-	// 	{
-	// 		if (line[strlen(line) - 1] == '\n')
-	//             line[strlen(line) - 1] = '\0';
-	//         printf("Ligne non vide : %s\n", line);
-	//         free(line);
-	//     }
-
-	//     close(fd);
-
-	//     return 0;
-	// }

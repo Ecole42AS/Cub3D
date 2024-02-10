@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
+/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 16:07:57 by lray              #+#    #+#             */
-/*   Updated: 2024/02/03 14:10:42 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/10 13:21:20 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,8 @@ typedef struct s_ray
 
 typedef struct s_map
 {
-	int		width;
-	int		height;
-	int		map[24][24];
+	t_veci	map_size;
+	// int		map[24][24];
 	char	**parsed_map;
 }	t_map;
 
@@ -115,3 +114,8 @@ typedef struct s_parsing_data
 }				t_parsing_data;
 
 #endif
+
+
+
+
+

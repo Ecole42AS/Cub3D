@@ -6,7 +6,7 @@
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 10:12:58 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/03 10:58:42 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/10 14:28:00 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,11 @@
 int	parser(char *file_path, t_parsing_data *data)
 {
 	int		fd;
-	char	*line;
 
 	fd = open_file(file_path);
 	if (fd == -1)
 		return (1);
-	if (!parse_texture_paths(data->texture, fd))
+	if (parse_texture_paths(data->texture, fd) == 1)
 	{
 		close(fd);
 		return (1);
@@ -54,10 +53,10 @@ int	parser(char *file_path, t_parsing_data *data)
 		free_texture(data->texture);
 		return (1);
 	}
-	if (!check_map_validity(data->map))
+	if (!check_map_validity(data->map->parsed_map))
 	{
 		free_texture(data->texture);
-		free_map(data->map);
+		free_map(data->map->parsed_map);
 		return (1);
 	}
 	return (0);
