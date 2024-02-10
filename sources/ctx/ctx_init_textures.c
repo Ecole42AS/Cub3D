@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 04:21:34 by lray              #+#    #+#             */
-/*   Updated: 2024/01/09 23:17:15 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/10 20:46:42 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 static void	make_background(t_ctx *ctx, unsigned int c1, unsigned int c2);
 
-int	ctx_init_textures(t_ctx *ctx, unsigned int colors[2], char **tex_path)
+int	ctx_init_textures(t_ctx *ctx, t_color *colors, char **tex_path)
 {
 	int	i;
 
 	ctx->textures[0] = img_create(ctx->mlx, ctx->win.width, ctx->win.height);
-	make_background(ctx, colors[0], colors[1]);
+	make_background(ctx, colors->rgb_floor, *colors->rgb_ceiling);
 	i = 1;
 	while (i <= 4)
 	{

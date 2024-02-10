@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:31:21 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/10 14:32:51 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/10 20:47:40 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,7 @@ void	parse_colors(int fd, t_color *color)
 	split_result = ft_split(line, ' ');
 	split_colors = ft_split(split_result[1], ',');
 	if (!ft_strcmp(split_result[0], "F"))
-	{
-		color->rgb_floor[1] = (unsigned int)ft_atoi(split_colors[0]);
-		color->rgb_floor[2] = (unsigned int)ft_atoi(split_colors[1]);
-		color->rgb_floor[3] = (unsigned int)ft_atoi(split_colors[2]);
-	}
+		color->rgb_floor = clr_make_trgb(0, ft_atoi(split_colors[0]), ft_atoi(split_colors[1]), ft_atoi(split_colors[2]));
 	free(line);
 	free_split(split_result);
 	free_split(split_colors);
@@ -37,9 +33,5 @@ void	parse_colors(int fd, t_color *color)
 	split_result = ft_split(line, ' ');
 	split_colors = ft_split(split_result[1], ',');
 	if (!ft_strcmp(split_result[0], "C"))
-	{
-		color->rgb_ceiling[1] = (unsigned int)ft_atoi(split_colors[0]);
-		color->rgb_ceiling[2] = (unsigned int)ft_atoi(split_colors[1]);
-		color->rgb_ceiling[3] = (unsigned int)ft_atoi(split_colors[2]);
-	}
+		color->rgb_ceiling = clr_make_trgb(0, ft_atoi(split_colors[0]), ft_atoi(split_colors[1]), ft_atoi(split_colors[2]));
 }
