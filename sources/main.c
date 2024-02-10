@@ -66,10 +66,9 @@ int main(int ac, char **av)
 	// 	ft_putstr_fd("Invalid arguments\n", 2);
 	// 	return (1);
 	// }
-	t_parsing_data *data;
+	t_parsing_data data;
 	t_ctx ctx;
 
-	data = NULL;
 	ctx_init(&ctx, WIN_WIDTH, WIN_HEIGHT, WIN_NAME);
 	if (ctx_init_textures(&ctx, (unsigned int[2]){CLR_CYAN, CLR_GREEN}, tex_paths) != 0)
 	{
@@ -77,17 +76,16 @@ int main(int ac, char **av)
 		ctx_free(&ctx);
 		return (1);
 	}
-	if (parsing_data_init(data))
+	if (parsing_data_init(&data))
 	{
-		// mlx_destroy_image(data.mlx, data.img.img);
-		// mlx_destroy_window(data.mlx, data.win);
+		printf("hello");
 		return (1);
 	}
-	if (parser(av[1], data))
+	if (parser(av[1], &data))
 		return(1);
-	ctx.map.parsed_map = data->map->parsed_map;
-	ctx.map.map_size = data->map->map_size;
-	player_init(&ctx.player, (t_vec){22, 12}, (t_vec){-1, 0}, (t_vec){0, 0.66});
+	ctx.map.parsed_map = data.map->parsed_map;
+	ctx.map.map_size = data.map->map_size;
+	//player_init(&ctx.player, (t_vec){22, 12}, (t_vec){-1, 0}, (t_vec){0, 0.66});
 	mlx_hook(ctx.win.win, ON_DESTROY, 0, close_handler, &ctx);
 	mlx_hook(ctx.win.win, 2, 1L<<0, key_handler, &ctx);
 	mlx_loop_hook(ctx.mlx, gameloop, &ctx);

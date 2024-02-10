@@ -6,7 +6,7 @@
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 13:44:25 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/10 14:31:53 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/10 15:50:34 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,7 @@ static t_map *map_init()
 {
     t_map *map = (t_map *)malloc(sizeof(t_map));
     if (map == NULL)
-	{
         return (NULL);
-    }
 
     map->map_size.x = 0;
     map->map_size.y = 0;
@@ -67,15 +65,13 @@ int parsing_data_init(t_parsing_data *data)
 {
     data->color = color_init();
     if (data->color == NULL) 
-	{
-        return (0);
-    }
+        return (1);
 
     data->texture = texture_init();
     if (data->texture == NULL) 
 	{
         free(data->color);
-        return (0);
+        return (1);
     }
 
     data->map = map_init();
@@ -83,8 +79,8 @@ int parsing_data_init(t_parsing_data *data)
 	{
         free(data->color);
         free(data->texture);
-        return (0);
+        return (1);
     }
 
-    return (1);
+    return (0);
 }
