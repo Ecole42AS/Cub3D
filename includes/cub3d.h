@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 10:44:13 by lray              #+#    #+#             */
-/*   Updated: 2024/02/11 20:09:50 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/11 20:14:38 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,7 @@
 # include "move.h"
 
 # define WIN_NAME "cub3D"
-# define WIN_WIDTH 1920/1.5
-# define WIN_HEIGHT 1080/1.5
-
-typedef struct s_mlx_data
-{
-	void	*mlx;
-	void	*mlx_win;
-	void	*img;
-	char	*addr;
-	int		bpp;
-	int		line_length;
-	int		endian;
-}			t_mlx_data;
+# define WIN_WIDTH 1280
+# define WIN_HEIGHT 720
 
 #endif

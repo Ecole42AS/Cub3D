@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:04:26 by lray              #+#    #+#             */
-/*   Updated: 2024/01/10 15:25:44 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/11 20:45:56 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define MOVE_H
 
 # define MOVE_SPEED 0.9
-# define ROT_SPEED 0.3
+# define ROT_SPEED 0.03
 
 void	go_front(t_ctx *ctx);
 void	go_back(t_ctx *ctx);

@@ -2,7 +2,6 @@ SRCS	=	sources/parsing/parsing_utils.c 			\
 			sources/parsing/textures.c 					\
 			sources/parsing/colors.c 					\
 			sources/parsing/map.c 						\
-			sources/parsing/parsing_init.c				\
 			sources/parsing/parser.c					\
 			sources/main.c								\
 			sources/mlx_utils/put_pixel.c				\
@@ -48,8 +47,7 @@ CC		=	gcc
 
 RM      =	rm -f
 
-CFLAGS	=	-Wall -Wextra -Werror -g
-#-fsanitize=address,undefined
+CFLAGS	=	-Wall -Wextra -Werror -g -fsanitize=address,undefined
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)

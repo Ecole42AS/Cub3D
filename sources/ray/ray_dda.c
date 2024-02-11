@@ -6,15 +6,15 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 01:14:43 by lray              #+#    #+#             */
-/*   Updated: 2024/02/11 15:45:47 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/11 21:55:35 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void check_hit(t_ctx *ctx, t_ray *ray);
+static void	check_hit(t_ctx *ctx, t_ray *ray);
 
-void ray_dda(t_ctx *ctx, t_ray *ray)
+void	ray_dda(t_ctx *ctx, t_ray *ray)
 {
 	while (ray->hit == 0)
 	{
@@ -34,7 +34,7 @@ void ray_dda(t_ctx *ctx, t_ray *ray)
 	}
 }
 
-static void check_hit(t_ctx *ctx, t_ray *ray)
+static void	check_hit(t_ctx *ctx, t_ray *ray)
 {
 	if (ctx->map->data[ray->map.y][ray->map.x] == '1')
 	{

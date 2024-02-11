@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 01:01:19 by lray              #+#    #+#             */
-/*   Updated: 2024/01/09 11:14:58 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/11 20:26:49 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	gameloop(t_ctx *ctx)
 	frame = raycasting(ctx, frame);
 	if (!frame)
 	{
-		ft_putstr_fd("Error will raycasting\n", 2);
+		ft_putstr_fd("Error while raycasting\n", 2);
 		ctx_free(ctx);
 		exit(EXIT_FAILURE);
 	}

@@ -6,65 +6,70 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:21:50 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/11 20:08:35 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/11 21:52:47 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int parse_and_set_texture(t_texture *texture, int fd, const char *prefix)
+int	parse_and_set_texture(t_texture *texture, int fd, const char *prefix)
 {
-	char *line = gnl_unempty(fd);
+	char	*line;
+	char	**split_result;
+
+	line = gnl_unempty(fd);
 	if (!line)
-		return 0;
-
-	char **split_result = ft_split(line, ' ');
+		return (0);
+	split_result = ft_split(line, ' ');
 	free(line);
-
 	if (!split_result || ft_strcmp(split_result[0], prefix) || split_result[2])
 	{
 		free_split(split_result);
 		ft_putstr_fd("A texture is missing in the map file\n", 2);
-		return 0;
+		return (0);
 	}
-
 	texture_path_setter(texture, split_result[1], prefix);
-
 	free_split(split_result);
-	return 1;
+	return (1);
 }
 
-void texture_path_setter(t_texture *texture, const char *path, const char *prefix)
+void	texture_path_setter(t_texture *t, const char *path, const char *prefix)
 {
 	if (!strcmp(prefix, "NO"))
 	{
-		texture->no_texture_path = ft_strdup(path);
-		texture->no_texture_path[ft_strlen(path) - 1] = '\0';
+		t->no_texture_path = ft_strdup(path);
+		t->no_texture_path[ft_strlen(path) - 1] = '\0';
 	}
 	else if (!strcmp(prefix, "SO"))
 	{
-		texture->so_texture_path = ft_strdup(path);
-		texture->so_texture_path[ft_strlen(path) - 1] = '\0';
+		t->so_texture_path = ft_strdup(path);
+		t->so_texture_path[ft_strlen(path) - 1] = '\0';
 	}
 	else if (!strcmp(prefix, "WE"))
 	{
-		texture->we_texture_path = ft_strdup(path);
-		texture->we_texture_path[ft_strlen(path) - 1] = '\0';
+		t->we_texture_path = ft_strdup(path);
+		t->we_texture_path[ft_strlen(path) - 1] = '\0';
 	}
 	else if (!strcmp(prefix, "EA"))
 	{
-		texture->ea_texture_path = ft_strdup(path);
-		texture->ea_texture_path[ft_strlen(path) - 1] = '\0';
+		t->ea_texture_path = ft_strdup(path);
+		t->ea_texture_path[ft_strlen(path) - 1] = '\0';
 	}
 }
 
-int parse_texture_paths(t_texture *texture, int fd)
+int	parse_texture_paths(t_texture *texture, int fd)
 {
-	const char *prefixes[] = {"NO", "SO", "WE", "EA"};
-	char *line;
-	line = NULL;
+	char	*prefixes[4];
+	char	*line;
+	int		i;
 
-	for (int i = 0; i < (int)(sizeof(prefixes) / sizeof(prefixes[0])); ++i)
+	prefixes[0] = "NO";
+	prefixes[1] = "SO";
+	prefixes[2] = "WE";
+	prefixes[3] = "EA";
+	line = NULL;
+	i = 0;
+	while (i < (int)(sizeof(prefixes) / sizeof(prefixes[0])))
 	{
 		if (!parse_and_set_texture(texture, fd, prefixes[i]) != 0)
 		{
@@ -74,8 +79,9 @@ int parse_texture_paths(t_texture *texture, int fd)
 				free(line);
 				line = get_next_line(fd);
 			}
-			return 0;
+			return (0);
 		}
+		++i;
 	}
-	return 1;
+	return (1);
 }

@@ -6,18 +6,20 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 12:17:10 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/11 20:06:19 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/11 21:36:41 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-char **map_parsing(int fd, char *file_path)
+static int	valide_celle(char cell, int *player_count);
+
+char	**map_parsing(int fd, char *file_path)
 {
-	t_veci *map_size;
-	int map_line_number;
-	char **map;
-	char *line;
+	t_veci	*map_size;
+	int		map_line_number;
+	char	**map;
+	char	*line;
 
 	map_size = ft_malloc_failed_msg(1, sizeof(t_veci));
 	map_line_number = get_map_line_number(file_path);
@@ -26,10 +28,7 @@ char **map_parsing(int fd, char *file_path)
 		return (NULL);
 	map = ft_calloc(map_line_number * 2, sizeof(char *));
 	if (!map)
-	{
-		printf("hekki");
 		free(line);
-	}
 	while (line)
 	{
 		if (line[ft_strlen(line) - 1] == '\n')
@@ -44,11 +43,11 @@ char **map_parsing(int fd, char *file_path)
 	return (map);
 }
 
-int get_map_line_number(char *file_path)
+int	get_map_line_number(char *file_path)
 {
-	int fd;
-	char *line;
-	int line_number;
+	int		fd;
+	char	*line;
+	int		line_number;
 
 	fd = open_file(file_path);
 	line_number = 0;
@@ -56,7 +55,7 @@ int get_map_line_number(char *file_path)
 	{
 		line = gnl_unempty(fd);
 		if (line == NULL)
-			break;
+			break ;
 		free(line);
 		line_number++;
 	}
@@ -65,10 +64,10 @@ int get_map_line_number(char *file_path)
 	return (line_number);
 }
 
-int is_map_closed(char **map)
+int	is_map_closed(char **map)
 {
-	t_veci p;
-	char cell;
+	t_veci	p;
+	char	c;
 
 	p.y = -1;
 	while (map[++p.y] != NULL)
@@ -76,17 +75,15 @@ int is_map_closed(char **map)
 		p.x = -1;
 		while (map[p.y][++p.x] != '\0')
 		{
-			cell = map[p.y][p.x];
-			if (cell == '0' || cell == 'N' || cell == 'S' || cell == 'E' || cell == 'W')
+			c = map[p.y][p.x];
+			if (c == '0' || c == 'N' || c == 'S' || c == 'E' || c == 'W')
 			{
 				if (p.y == 0 || p.x == 0 || map[p.y][p.x + 1] == '\0' ||
 					map[p.y + 1] == NULL || map[p.y][p.x + 1] == ' ' ||
 					map[p.y + 1][p.x] == ' ' || map[p.y][p.x - 1] == ' ' ||
 					map[p.y - 1][p.x] == ' ')
 				{
-					printf("Error, map is not closed \
-at [%d, %d]\n",
-						   p.x + 1, p.y + 1);
+					ft_putstr_fd("Error, map is not closed\n", 2);
 					return (1);
 				}
 			}
@@ -95,11 +92,10 @@ at [%d, %d]\n",
 	return (0);
 }
 
-int check_map_validity(char **map)
+int	check_map_validity(char **map)
 {
-	t_veci pos;
-	char cell;
-	int player_count;
+	t_veci	pos;
+	int		player_count;
 
 	player_count = 0;
 	pos.y = -1;
@@ -108,22 +104,27 @@ int check_map_validity(char **map)
 		pos.x = -1;
 		while (map[pos.y][++pos.x] != '\0')
 		{
-			cell = map[pos.y][pos.x];
-			if (cell == 'N' || cell == 'S' || cell == 'E' || cell == 'W')
-			{
-				player_count++;
-				continue;
-			}
-			if (cell == '0' || cell == '1' || cell == ' ')
-				continue;
-			printf("%s", map[pos.y]);
-			printf("Error, invalid character '%c' \
-at [%d, %d]\n",
-				   cell, pos.x + 1, pos.y + 1);
-			return (0);
+			if (!valide_celle(map[pos.y][pos.x], &player_count))
+				return (0);
 		}
 	}
 	if (player_count != 1)
-		printf("Error, there must be only one player in the map\n");
+	{
+		ft_putstr_fd("Error, exactly one player must be on the map\n", 2);
+		return (0);
+	}
 	return (1);
+}
+
+static int	valide_celle(char cell, int *player_count)
+{
+	if (cell == 'N' || cell == 'S' || cell == 'E' || cell == 'W')
+	{
+		(*player_count)++;
+		return (1);
+	}
+	if (cell == '0' || cell == '1' || cell == ' ')
+		return (1);
+	ft_putstr_fd("Error, invalid character\n", 2);
+	return (0);
 }

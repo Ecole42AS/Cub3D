@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 16:07:57 by lray              #+#    #+#             */
-/*   Updated: 2024/02/11 16:16:59 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/11 20:16:26 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,6 @@ typedef struct s_color
 	unsigned int	rgb_ceiling;
 }	t_color;
 
-
 typedef struct s_texture
 {
 	char	*no_texture_path;
@@ -116,8 +115,3 @@ typedef struct s_parsing_data
 }	t_parsing_data;
 
 #endif
-
-
-
-
-

@@ -13,49 +13,49 @@
 
 #include "../includes/cub3d.h"
 
+static int	parse_and_validate(t_ctx *ctx, char *path);
 static int	game_init(t_ctx *ctx);
 static void	game_run(t_ctx *ctx);
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_ctx ctx;
+	t_ctx	ctx;
 
 	if (ac != 2)
 		av[1] = "maps/test_map.cub";
 	if (!ctx_init(&ctx, WIN_WIDTH, WIN_HEIGHT, WIN_NAME))
 	{
-		ft_putstr_fd("Error during data initialization\n", 2);
 		ctx_free(&ctx);
-		return (2);
+		return (1);
 	}
-	if (!parser(av[1], &ctx))
+	if (!parse_and_validate(&ctx, av[1]))
 	{
-		ft_putstr_fd("Error during map parsing\n", 2);
 		ctx_free(&ctx);
-		return (3);
-	}
-	if (!ctx_validation(&ctx))
-	{
-		ft_putstr_fd("Error during validation\n", 2);
-		ctx_free(&ctx);
-		return (3);
+		return (1);
 	}
 	if (!game_init(&ctx))
 	{
-		ft_putstr_fd("Error during game initialization\n", 2);
 		ctx_free(&ctx);
-		return (4);
+		return (1);
 	}
 	game_run(&ctx);
-	ctx_free(&ctx);
 	return (0);
+}
+
+static int	parse_and_validate(t_ctx *ctx, char *path)
+{
+	if (!parser(path, ctx))
+		return (0);
+	if (!ctx_validation(ctx))
+		return (0);
+	return (1);
 }
 
 static int	game_init(t_ctx *ctx)
 {
-
 	ctx->mlx = mlx_init();
-	player_init(&ctx->player, (t_vec){10, 10}, (t_vec){-1, 0}, (t_vec){0, 0.66});
+	player_init(&ctx->player, \
+		(t_vec){10, 10}, (t_vec){-1, 0}, (t_vec){0, 0.66});
 	if (!ctx->mlx)
 	{
 		ft_putstr_fd("Error during mlx initialization\n", 2);
@@ -69,7 +69,7 @@ static int	game_init(t_ctx *ctx)
 static void	game_run(t_ctx *ctx)
 {
 	mlx_hook(ctx->win.win, ON_DESTROY, 0, close_handler, ctx);
-	mlx_hook(ctx->win.win, 2, 1L<<0, key_handler, ctx);
+	mlx_hook(ctx->win.win, 2, 1L << 0, key_handler, ctx);
 	mlx_loop_hook(ctx->mlx, gameloop, ctx);
 	mlx_do_key_autorepeaton(ctx->mlx);
 	mlx_loop(ctx->mlx);
