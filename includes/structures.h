@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 16:07:57 by lray              #+#    #+#             */
-/*   Updated: 2024/02/03 14:10:42 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/10 21:04:15 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,8 @@ typedef struct s_ray
 
 typedef struct s_map
 {
-	int		width;
-	int		height;
-	int		map[24][24];
+	t_veci	map_size;
+	// int		map[24][24];
 	char	**parsed_map;
 }	t_map;
 
@@ -103,8 +102,8 @@ typedef struct s_texture
 
 typedef struct s_color
 {
-	unsigned int	rgb_floor[4];
-	unsigned int	rgb_ceiling[4];
+	unsigned int	rgb_floor;
+	unsigned int	rgb_ceiling;
 }		t_color;
 
 typedef struct s_parsing_data
@@ -115,3 +114,8 @@ typedef struct s_parsing_data
 }				t_parsing_data;
 
 #endif
+
+
+
+
+

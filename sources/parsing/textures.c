@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:21:50 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/07 15:53:09 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/10 21:13:07 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,56 +21,56 @@
 // 	free_texture;
 // }
 
-int	parse_texture_paths(t_texture *texture, int fd)
-{
-    char *line;
-    char **split_result;
+// int	parse_texture_paths(t_texture *texture, int fd)
+// {
+//     char *line;
+//     char **split_result;
 
-    line = gnl_unempty(fd);
-	if (!line)
-		return (1);
-    split_result = ft_split(line, ' ');
-    if (!ft_strcmp(split_result[0], "NO") && !split_result[2] && !split_result)
-		texture->no_texture_path = ft_strdup(split_result[1]);
-	else
-		return (1);
-    free(line);
-    free_split(split_result);
+//     line = gnl_unempty(fd);
+// 	if (!line)
+// 		return (1);
+//     split_result = ft_split(line, ' ');
+//     if (!ft_strcmp(split_result[0], "NO") && !split_result[2] && !split_result)
+// 		texture->no_texture_path = ft_strdup(split_result[1]);
+// 	else
+// 		return (1);
+//     free(line);
+//     free_split(split_result);
 
-	line = gnl_unempty(fd);
-	if (!line)
-		return (1);
-    split_result = ft_split(line, ' ');
-    if (!ft_strcmp(split_result[0], "SO") && !split_result[2] && !split_result)
-		texture->so_texture_path = ft_strdup(split_result[1]);
-	else
-		return (1);
-    free(line);
-    free_split(split_result);
+// 	line = gnl_unempty(fd);
+// 	if (!line)
+// 		return (1);
+//     split_result = ft_split(line, ' ');
+//     if (!ft_strcmp(split_result[0], "SO") && !split_result[2] && !split_result)
+// 		texture->so_texture_path = ft_strdup(split_result[1]);
+// 	else
+// 		return (1);
+//     free(line);
+//     free_split(split_result);
 
-	line = gnl_unempty(fd);
-	if (!line)
-		return (1);
-    split_result = ft_split(line, ' ');
-    if (!ft_strcmp(split_result[0], "WE") && !split_result[2] && !split_result)
-		texture->we_texture_path = ft_strdup(split_result[1]);
-	else
-		return (1);
-    free(line);
-    free_split(split_result);
+// 	line = gnl_unempty(fd);
+// 	if (!line)
+// 		return (1);
+//     split_result = ft_split(line, ' ');
+//     if (!ft_strcmp(split_result[0], "WE") && !split_result[2] && !split_result)
+// 		texture->we_texture_path = ft_strdup(split_result[1]);
+// 	else
+// 		return (1);
+//     free(line);
+//     free_split(split_result);
 
-	line = gnl_unempty(fd);
-	if (!line)
-		return (1);
-    split_result = ft_split(line, ' ');
-    if (!ft_strcmp(split_result[0], "EA") && !split_result[2] && !split_result)
-		texture->ea_texture_path = ft_strdup(split_result[1]);
-	else
-		return (1);
-    free(line);
-    free_split(split_result);
-	return (0);
-}
+// 	line = gnl_unempty(fd);
+// 	if (!line)
+// 		return (1);
+//     split_result = ft_split(line, ' ');
+//     if (!ft_strcmp(split_result[0], "EA") && !split_result[2] && !split_result)
+// 		texture->ea_texture_path = ft_strdup(split_result[1]);
+// 	else
+// 		return (1);
+//     free(line);
+//     free_split(split_result);
+// 	return (0);
+// }
 
 
 /* --------------------------     code to delete if not usefull    ------------------------------*/
@@ -127,44 +127,56 @@ int	parse_texture_paths(t_texture *texture, int fd)
 // }
 
 // ------------------------------Code refracto--------------------------------------
-// int parse_and_set_texture(t_texture *texture, int fd, const char *prefix) {
-//     char *line = gnl_unempty(fd);
-//     if (!line)
-//         return 1;
+int parse_and_set_texture(t_texture *texture, int fd, const char *prefix) {
+    char *line = gnl_unempty(fd);
+    if (!line)
+        return 1;
 
-//     char **split_result = ft_split(line, ' ');
-//     free(line);
+    char **split_result = ft_split(line, ' ');
+    free(line);
 
-//     if (!split_result || ft_strcmp(split_result[0], prefix) || split_result[2]) {
-//         free_split(split_result);
-//         return 1;
-//     }
+    if (!split_result || ft_strcmp(split_result[0], prefix) || split_result[2]) {
+        free_split(split_result);
+        return 1;
+    }
 
-//     // Utilisation de la fonction auxiliaire pour définir le chemin de texture
-//     texture_path_setter(texture, split_result[1]);
+    texture_path_setter(texture, split_result[1], prefix);
 
-//     free_split(split_result);
-//     return 0;
-// }
+    free_split(split_result);
+    return 0;
+}
 
-// void texture_path_setter(t_texture *texture, const char *path) {
-//     if (!strcmp(prefix, "NO"))
-//         texture->NO_texture_path = ft_strdup(path);
-//     else if (!strcmp(prefix, "SO"))
-//         texture->SO_texture_path = ft_strdup(path);
-//     else if (!strcmp(prefix, "WE"))
-//         texture->WE_texture_path = ft_strdup(path);
-//     else if (!strcmp(prefix, "EA"))
-//         texture->EA_texture_path = ft_strdup(path);
-// }
+void texture_path_setter(t_texture *texture, const char *path, const char *prefix) {
+    if (!strcmp(prefix, "NO"))
+	{
+        texture->no_texture_path = ft_strdup(path);
+		texture->no_texture_path[ft_strlen(path) - 1] = '\0';
+	}
+    else if (!strcmp(prefix, "SO"))
+	{
+        texture->so_texture_path = ft_strdup(path);
+		texture->so_texture_path[ft_strlen(path) - 1] = '\0';
+	}
+    else if (!strcmp(prefix, "WE"))
+	{
+        texture->we_texture_path = ft_strdup(path);
+		texture->we_texture_path[ft_strlen(path) - 1] = '\0';
 
-// int parse_texture_paths(t_texture *texture, int fd) {
-//     const char *prefixes[] = { "NO", "SO", "WE", "EA" };
+	}
+    else if (!strcmp(prefix, "EA"))
+	{
+        texture->ea_texture_path = ft_strdup(path);
+		texture->ea_texture_path[ft_strlen(path) - 1] = '\0';
+	}
+}
 
-//     for (int i = 0; i < sizeof(prefixes) / sizeof(prefixes[0]); ++i) {
-//         if (parse_and_set_texture(texture, fd, prefixes[i]) != 0)
-//             return 1;
-//     }
+int parse_texture_paths(t_texture *texture, int fd) {
+    const char *prefixes[] = { "NO", "SO", "WE", "EA" };
 
-//     return 0;
-// }
+    for (int i = 0; i < (int)(sizeof(prefixes) / sizeof(prefixes[0])); ++i) {
+        if (parse_and_set_texture(texture, fd, prefixes[i]) != 0)
+            return 1;
+    }
+
+    return 0;
+}

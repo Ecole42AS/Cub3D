@@ -3,31 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
+/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 12:17:10 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/03 14:14:28 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/10 16:44:10 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
 /*Voir pour mettre 	t_veci	*map_size; dans les param de la fonction(pour la norme)*/
-char **map_parsing(int fd, char	*file_path)
+char **map_parsing(int fd, char *file_path)
 {
-	t_veci		*map_size;
-	int			map_line_number;
-	char 		**map;
-	char		*line;
+	t_veci *map_size;
+	int map_line_number;
+	char **map;
+	char *line;
 
 	map_size = ft_malloc_failed_msg(1, sizeof(t_veci));
+	// map_size = calloc(1, sizeof(t_veci));
 	map_line_number = get_map_line_number(file_path);
 	line = gnl_unempty(fd);
 	if (!line)
 		return (NULL);
-	map = ft_calloc(map_line_number + 1, sizeof(char *));
+	printf("\n");
+	printf("%d", map_line_number);
+	printf("\n");
+	map = ft_calloc(map_line_number * 2, sizeof(char *));
 	if (!map)
+	{
+		printf("hekki");
 		free(line);
+	}
 	while (line)
 	{
 		if (line[ft_strlen(line) - 1] == '\n')
@@ -41,11 +48,11 @@ char **map_parsing(int fd, char	*file_path)
 	return (map);
 }
 
-int	get_map_line_number(char *file_path)
+int get_map_line_number(char *file_path)
 {
-	int		fd;
-	char	*line;
-	int		line_number;
+	int fd;
+	char *line;
+	int line_number;
 
 	fd = open_file(file_path);
 	line_number = 0;
@@ -53,7 +60,7 @@ int	get_map_line_number(char *file_path)
 	{
 		line = gnl_unempty(fd);
 		if (line == NULL)
-			break ;
+			break;
 		free(line);
 		line_number++;
 	}
@@ -62,10 +69,10 @@ int	get_map_line_number(char *file_path)
 	return (line_number);
 }
 
-int	is_map_closed(char **map)
+int is_map_closed(char **map)
 {
-	t_veci	p;
-	char	cell;
+	t_veci p;
+	char cell;
 
 	p.y = -1;
 	while (map[++p.y] != NULL)
@@ -74,8 +81,7 @@ int	is_map_closed(char **map)
 		while (map[p.y][++p.x] != '\0')
 		{
 			cell = map[p.y][p.x];
-			if (cell == '0' || cell == 'N' || cell == 'S' || cell == 'E'
-				|| cell == 'W')
+			if (cell == '0' || cell == 'N' || cell == 'S' || cell == 'E' || cell == 'W')
 			{
 				if (p.y == 0 || p.x == 0 || map[p.y][p.x + 1] == '\0' ||
 					map[p.y + 1] == NULL || map[p.y][p.x + 1] == ' ' ||
@@ -83,7 +89,8 @@ int	is_map_closed(char **map)
 					map[p.y - 1][p.x] == ' ')
 				{
 					printf("Error, map is not closed \
-at [%d, %d]\n", p.x + 1, p.y + 1);
+at [%d, %d]\n",
+						   p.x + 1, p.y + 1);
 					return (1);
 				}
 			}
@@ -92,11 +99,11 @@ at [%d, %d]\n", p.x + 1, p.y + 1);
 	return (0);
 }
 
-int	check_map_validity(char **map)
+int check_map_validity(char **map)
 {
-	t_veci		pos;
-	char		cell;
-	int			player_count;
+	t_veci pos;
+	char cell;
+	int player_count;
 
 	player_count = 0;
 	pos.y = -1;
@@ -109,12 +116,14 @@ int	check_map_validity(char **map)
 			if (cell == 'N' || cell == 'S' || cell == 'E' || cell == 'W')
 			{
 				player_count++;
-				continue ;
+				continue;
 			}
 			if (cell == '0' || cell == '1' || cell == ' ')
-				continue ;
+				continue;
+			printf("%s", map[pos.y]);
 			printf("Error, invalid character '%c' \
-at [%d, %d]\n", cell, pos.x + 1, pos.y + 1);
+at [%d, %d]\n",
+				   cell, pos.x + 1, pos.y + 1);
 			return (1);
 		}
 	}
