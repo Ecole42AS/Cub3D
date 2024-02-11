@@ -13,10 +13,6 @@
 
 #include "../includes/cub3d.h"
 
-#define WIN_NAME "Proto"
-#define WIN_WIDTH 1920/1.5
-#define WIN_HEIGHT 1080/1.5
-
 static int	game_init(t_ctx *ctx);
 static void	game_run(t_ctx *ctx);
 

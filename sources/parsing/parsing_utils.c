@@ -6,16 +6,15 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 09:16:20 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/11 16:42:46 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/11 20:08:10 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-/*Get next unempty line of fd*/
 char *gnl_unempty(int fd)
 {
-	char	*line;
+	char *line;
 
 	line = get_next_line(fd);
 	while (line != NULL && ft_strcmp(line, "\n") == 0)
@@ -26,8 +25,7 @@ char *gnl_unempty(int fd)
 	return (line);
 }
 
-/*Return fd, -1 if open failed or file is invalid*/
-int	open_file(char *file_path)
+int open_file(char *file_path)
 {
 	int fd;
 
@@ -52,18 +50,18 @@ void free_split(char **split_result)
 	int i;
 
 	i = 0;
-    if (split_result)
-    {
-        while (split_result[i] != NULL)
-        {
-            free(split_result[i]);
+	if (split_result)
+	{
+		while (split_result[i] != NULL)
+		{
+			free(split_result[i]);
 			i++;
-        }
-        free(split_result);
-    }
+		}
+		free(split_result);
+	}
 }
 
-void	free_texture(t_texture *texture)
+void free_texture(t_texture *texture)
 {
 	free(texture->no_texture_path);
 	free(texture->so_texture_path);
@@ -73,26 +71,13 @@ void	free_texture(t_texture *texture)
 
 void free_map(char **map)
 {
-    int i;
+	int i;
 
-    if (!map)
-        return;
+	if (!map)
+		return;
 
-    i = -1;
-    while (map[++i])
-        free(map[i]);
-    free(map);
+	i = -1;
+	while (map[++i])
+		free(map[i]);
+	free(map);
 }
-
-
-// void color_init(t_color *color)
-// {
-// 	int i;
-
-// 	i = -1;
-//     while (++i < 4)
-//     {
-//         color->rgb_floor[i] = 0;
-//         color->rgb_ceiling[i] = 0;
-//     }
-// }

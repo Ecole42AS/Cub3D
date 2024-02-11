@@ -6,15 +6,12 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 10:44:13 by lray              #+#    #+#             */
-/*   Updated: 2024/02/03 14:06:16 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/11 20:09:50 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-
-# define DISPLAY_WIDTH 800
-# define DISPLAY_HEIGHT 600
 
 # include "../libft/libft.h"
 # include <unistd.h>
@@ -34,6 +31,10 @@
 # include "ray.h"
 # include "parsing.h"
 # include "move.h"
+
+# define WIN_NAME "cub3D"
+# define WIN_WIDTH 1920/1.5
+# define WIN_HEIGHT 1080/1.5
 
 typedef struct s_mlx_data
 {

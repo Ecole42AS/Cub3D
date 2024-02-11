@@ -6,13 +6,12 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 12:17:10 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/11 16:59:05 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/11 20:06:19 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-/*Voir pour mettre 	t_veci	*map_size; dans les param de la fonction(pour la norme)*/
 char **map_parsing(int fd, char *file_path)
 {
 	t_veci *map_size;
