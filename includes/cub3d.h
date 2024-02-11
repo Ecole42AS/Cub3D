@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 10:44:13 by lray              #+#    #+#             */
-/*   Updated: 2024/02/11 20:14:38 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/11 23:18:51 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <errno.h>
+# include <limits.h>
 # include "../minilibx/linux/mlx.h"
 
 # include "structures.h"
