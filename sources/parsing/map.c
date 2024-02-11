@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 12:17:10 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/11 21:36:41 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/11 23:02:20 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,12 @@ int	is_map_closed(char **map)
 					map[p.y - 1][p.x] == ' ')
 				{
 					ft_putstr_fd("Error, map is not closed\n", 2);
-					return (1);
+					return (0);
 				}
 			}
 		}
 	}
-	return (0);
+	return (1);
 }
 
 int	check_map_validity(char **map)
