@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 12:17:10 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/11 23:02:20 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/11 23:47:51 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,20 +92,34 @@ int	is_map_closed(char **map)
 	return (1);
 }
 
-int	check_map_validity(char **map)
+int	check_map_validity(t_ctx *ctx)
 {
 	t_veci	pos;
 	int		player_count;
+	char	cell;
 
 	player_count = 0;
 	pos.y = -1;
-	while (map[++pos.y] != NULL)
+	while (ctx->map->data[++pos.y] != NULL)
 	{
 		pos.x = -1;
-		while (map[pos.y][++pos.x] != '\0')
+		while (ctx->map->data[pos.y][++pos.x] != '\0')
 		{
-			if (!valide_celle(map[pos.y][pos.x], &player_count))
+			cell = ctx->map->data[pos.y][pos.x];
+			if (!valide_celle(cell, &player_count))
 				return (0);
+			if (cell == 'N' || cell == 'S' || cell == 'E' || cell == 'W')
+			{
+				if (cell == 'N')
+					player_init(&ctx->player, (t_vec){pos.x + 0.5, pos.y + 0.5}, (t_vec){0, -1}, (t_vec){-0.66, 0});
+				else if (cell == 'S')
+					player_init(&ctx->player, (t_vec){pos.x + 0.5, pos.y + 0.5}, (t_vec){0, 1}, (t_vec){0.66, 0});
+				else if (cell == 'E')
+					player_init(&ctx->player, (t_vec){pos.x + 0.5, pos.y + 0.5}, (t_vec){-1, 0}, (t_vec){0, 0.66});
+				else if (cell == 'W')
+					player_init(&ctx->player, (t_vec){pos.x + 0.5, pos.y + 0.5}, (t_vec){1, 0}, (t_vec){0, -0.66});
+
+			}
 		}
 	}
 	if (player_count != 1)
