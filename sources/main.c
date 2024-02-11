@@ -54,8 +54,6 @@ static int	parse_and_validate(t_ctx *ctx, char *path)
 static int	game_init(t_ctx *ctx)
 {
 	ctx->mlx = mlx_init();
-	player_init(&ctx->player, \
-		(t_vec){10, 10}, (t_vec){-1, 0}, (t_vec){0, 0.66});
 	if (!ctx->mlx)
 	{
 		ft_putstr_fd("Error during mlx initialization\n", 2);
