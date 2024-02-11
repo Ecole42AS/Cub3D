@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 09:16:20 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/10 14:05:22 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/11 16:42:46 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,12 @@ int	open_file(char *file_path)
 	}
 	fd = open(file_path, O_RDONLY);
 	if (fd == -1)
+	{
+		ft_putstr_fd(file_path, 2);
+		ft_putstr_fd(": ", 2);
 		ft_putstr_fd(strerror(errno), 2);
+		ft_putstr_fd("\n", 2);
+	}
 	return (fd);
 }
 
@@ -64,7 +69,6 @@ void	free_texture(t_texture *texture)
 	free(texture->so_texture_path);
 	free(texture->we_texture_path);
 	free(texture->ea_texture_path);
-	free(texture);
 }
 
 void free_map(char **map)

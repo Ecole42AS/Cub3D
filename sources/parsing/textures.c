@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:21:50 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/10 21:13:07 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/11 17:22:42 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,20 +130,21 @@
 int parse_and_set_texture(t_texture *texture, int fd, const char *prefix) {
     char *line = gnl_unempty(fd);
     if (!line)
-        return 1;
+        return 0;
 
     char **split_result = ft_split(line, ' ');
     free(line);
 
     if (!split_result || ft_strcmp(split_result[0], prefix) || split_result[2]) {
         free_split(split_result);
-        return 1;
+		ft_putstr_fd("A texture is missing in the map file\n", 2);
+        return 0;
     }
 
     texture_path_setter(texture, split_result[1], prefix);
 
     free_split(split_result);
-    return 0;
+    return 1;
 }
 
 void texture_path_setter(t_texture *texture, const char *path, const char *prefix) {
@@ -172,11 +173,20 @@ void texture_path_setter(t_texture *texture, const char *path, const char *prefi
 
 int parse_texture_paths(t_texture *texture, int fd) {
     const char *prefixes[] = { "NO", "SO", "WE", "EA" };
+	char	*line;
+	line = NULL;
 
     for (int i = 0; i < (int)(sizeof(prefixes) / sizeof(prefixes[0])); ++i) {
-        if (parse_and_set_texture(texture, fd, prefixes[i]) != 0)
-            return 1;
+        if (!parse_and_set_texture(texture, fd, prefixes[i]) != 0)
+		{
+			line = get_next_line(fd);
+			while(line)
+			{
+				free(line);
+				line = get_next_line(fd);
+			}
+            return 0;
+		}
     }
-
-    return 0;
+    return 1;
 }

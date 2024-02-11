@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 10:12:58 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/11 11:30:53 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/11 17:13:40 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,31 +34,22 @@
 // 	return (0);
 // }
 
-int	parser(char *file_path, t_parsing_data *data)
+int	parser(char *file_path, t_ctx *ctx)
 {
 	int		fd;
 
 	fd = open_file(file_path);
 	if (fd == -1)
-		return (1);
-	if (parse_texture_paths(data->texture, fd) == 1)
+		return (0);
+	if (!parse_texture_paths(&ctx->textures_path, fd))
 	{
 		close(fd);
-		return (1);
+		return (0);
 	}
-	parse_colors(fd, data->color);
-	data->map->parsed_map = map_parsing(fd, file_path);
+	parse_colors(fd, &ctx->color);
+	ctx->map->data = map_parsing(fd, file_path);
 	close(fd);
-	if (data->map == NULL)
-	{        
-		free_texture(data->texture);
-		return (1);
-	}
-	if (check_map_validity(data->map->parsed_map))
-	{
-		free_texture(data->texture);
-		free_map(data->map->parsed_map);
-		return (1);
-	}
-	return (0);
+	if (ctx->map == NULL)
+		return (0);
+	return (1);
 }

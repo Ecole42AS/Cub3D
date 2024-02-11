@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 16:07:57 by lray              #+#    #+#             */
-/*   Updated: 2024/02/10 21:04:15 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/11 16:16:59 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,7 @@ typedef struct s_ray
 typedef struct s_map
 {
 	t_veci	map_size;
-	// int		map[24][24];
-	char	**parsed_map;
+	char	**data;
 }	t_map;
 
 typedef struct s_player
@@ -83,14 +82,12 @@ typedef struct s_image
 	int		height;
 }	t_image;
 
-typedef struct s_ctx
+typedef struct s_color
 {
-	void		*mlx;
-	t_win		win;
-	t_map		map;
-	t_player	player;
-	t_image		*textures[5];
-}	t_ctx;
+	unsigned int	rgb_floor;
+	unsigned int	rgb_ceiling;
+}	t_color;
+
 
 typedef struct s_texture
 {
@@ -98,20 +95,25 @@ typedef struct s_texture
 	char	*so_texture_path;
 	char	*we_texture_path;
 	char	*ea_texture_path;
-}			t_texture;
+}	t_texture;
 
-typedef struct s_color
+typedef struct s_ctx
 {
-	unsigned int	rgb_floor;
-	unsigned int	rgb_ceiling;
-}		t_color;
+	void		*mlx;
+	t_win		win;
+	t_map		*map;
+	t_player	player;
+	t_image		*textures[5];
+	t_texture	textures_path;
+	t_color		color;
+}	t_ctx;
 
 typedef struct s_parsing_data
 {
 	t_color		*color;
 	t_texture	*texture;
 	t_map		*map;
-}				t_parsing_data;
+}	t_parsing_data;
 
 #endif
 

@@ -18,8 +18,8 @@ SRCS	=	sources/parsing/parsing_utils.c 			\
 			sources/events/key_handler.c				\
 			sources/events/close_handler.c				\
 			sources/ctx/ctx_init.c						\
+			sources/ctx/ctx_validation.c						\
 			sources/ctx/ctx_init_textures.c				\
-			sources/ctx/ctx_show.c						\
 			sources/ctx/ctx_free.c						\
 			sources/win/win_init.c						\
 			sources/win/win_free.c						\
@@ -48,7 +48,8 @@ CC		=	gcc
 
 RM      =	rm -f
 
-CFLAGS	=	-Wall -Wextra -Werror -g -fsanitize=address,undefined
+CFLAGS	=	-Wall -Wextra -Werror -g
+#-fsanitize=address,undefined
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)

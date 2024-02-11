@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_dda.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 01:14:43 by lray              #+#    #+#             */
-/*   Updated: 2024/02/10 16:51:14 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/11 15:45:47 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void ray_dda(t_ctx *ctx, t_ray *ray)
 
 static void check_hit(t_ctx *ctx, t_ray *ray)
 {
-	if (ctx->map.parsed_map[ray->map.y][ray->map.x] == '1')
+	if (ctx->map->data[ray->map.y][ray->map.x] == '1')
 	{
 		if (ray->side == 0)
 		{

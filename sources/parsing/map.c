@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 12:17:10 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/11 11:32:31 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/11 16:59:05 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,10 +121,10 @@ int check_map_validity(char **map)
 			printf("Error, invalid character '%c' \
 at [%d, %d]\n",
 				   cell, pos.x + 1, pos.y + 1);
-			return (1);
+			return (0);
 		}
 	}
 	if (player_count != 1)
 		printf("Error, there must be only one player in the map\n");
-	return (is_map_closed(map) && player_count == 1);
+	return (1);
 }

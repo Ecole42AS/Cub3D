@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 13:44:25 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/10 20:48:10 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/11 15:38:33 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static t_map *map_init()
 
     map->map_size.x = 0;
     map->map_size.y = 0;
-    map->parsed_map = NULL;
+    map->data = NULL;
 
     return (map);
 }
