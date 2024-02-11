@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 01:14:43 by lray              #+#    #+#             */
-/*   Updated: 2024/02/11 21:55:35 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/11 23:52:25 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,16 +41,16 @@ static void	check_hit(t_ctx *ctx, t_ray *ray)
 		if (ray->side == 0)
 		{
 			if (ray->dir.x > 0)
-				ray->hit = RAY_SU;
+				ray->hit = RAY_WE;
 			else
-				ray->hit = RAY_NO;
+				ray->hit = RAY_EA;
 		}
 		else
 		{
 			if (ray->dir.y > 0)
-				ray->hit = RAY_EA;
+				ray->hit = RAY_SU;
 			else
-				ray->hit = RAY_WE;
+				ray->hit = RAY_NO;
 		}
 	}
 }
