@@ -6,7 +6,7 @@
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 12:17:10 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/10 16:44:10 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/11 11:32:31 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,10 @@ char **map_parsing(int fd, char *file_path)
 	char *line;
 
 	map_size = ft_malloc_failed_msg(1, sizeof(t_veci));
-	// map_size = calloc(1, sizeof(t_veci));
 	map_line_number = get_map_line_number(file_path);
 	line = gnl_unempty(fd);
 	if (!line)
 		return (NULL);
-	printf("\n");
-	printf("%d", map_line_number);
-	printf("\n");
 	map = ft_calloc(map_line_number * 2, sizeof(char *));
 	if (!map)
 	{
@@ -45,6 +41,7 @@ char **map_parsing(int fd, char *file_path)
 		line = get_next_line(fd);
 		map_size->y++;
 	}
+	free(map_size);
 	return (map);
 }
 
