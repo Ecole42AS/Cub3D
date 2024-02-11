@@ -6,7 +6,7 @@
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 10:12:58 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/10 16:27:17 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/11 11:30:53 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	parser(char *file_path, t_parsing_data *data)
 	data->map->parsed_map = map_parsing(fd, file_path);
 	close(fd);
 	if (data->map == NULL)
-	{
+	{        
 		free_texture(data->texture);
 		return (1);
 	}

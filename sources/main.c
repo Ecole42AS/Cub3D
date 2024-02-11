@@ -31,16 +31,21 @@ int main(int ac, char **av)
 
 	if (ac != 2)
 	{
-/* 		ft_putstr_fd("Invalid arguments\n", 2);
-		return (1); */
-		av[1] = "maps/test_map.cub";
-	}
-	if (parsing_data_init(&data))
-	{
+ 		ft_putstr_fd("Invalid argument\n", 2);
 		return (1);
 	}
-	if (parser(av[1], &data))
+	else if (parsing_data_init(&data))
+	{
+		// mlx_destroy_image(ctx.mlx, image); //est ce qu'il y a deja une image a se moment
+		// mlx_destroy_window(ctx.mlx, ctx.win.win);
+		return (1);
+	}
+	else if (parser(av[1], &data))
+	{
+		// mlx_destroy_image(ctx.mlx, image); //est ce qu'il y a deja une image a se moment
+		// mlx_destroy_window(ctx.mlx, ctx.win.win);
 		return(1);
+	}
 	ctx_init(&ctx, WIN_WIDTH, WIN_HEIGHT, WIN_NAME);
 	if (ctx_init_textures(&ctx, data.color, data.texture) != 0)
 	{
