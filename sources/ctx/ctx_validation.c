@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/11 16:51:07 by lray              #+#    #+#             */
-/*   Updated: 2024/02/11 23:02:42 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/11 23:13:18 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	check_texture_path_validity(char *texture_path, char *texture_name);
 
 int	ctx_validation(t_ctx *ctx)
 {
-	if (!check_map_validity(ctx->map->data))
+	if (!check_map_validity(ctx))
 		return (0);
 	if (!is_map_closed(ctx->map->data))
 		return (0);
