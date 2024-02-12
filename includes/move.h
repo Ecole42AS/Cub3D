@@ -6,14 +6,14 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 11:04:26 by lray              #+#    #+#             */
-/*   Updated: 2024/02/11 20:45:56 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/12 14:00:36 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MOVE_H
 # define MOVE_H
 
-# define MOVE_SPEED 0.9
+# define MOVE_SPEED 0.1
 # define ROT_SPEED 0.03
 
 void	go_front(t_ctx *ctx);
