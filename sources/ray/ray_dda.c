@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ray_dda.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 01:14:43 by lray              #+#    #+#             */
-/*   Updated: 2024/02/10 16:51:14 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/11 23:52:25 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-static void check_hit(t_ctx *ctx, t_ray *ray);
+static void	check_hit(t_ctx *ctx, t_ray *ray);
 
-void ray_dda(t_ctx *ctx, t_ray *ray)
+void	ray_dda(t_ctx *ctx, t_ray *ray)
 {
 	while (ray->hit == 0)
 	{
@@ -34,23 +34,23 @@ void ray_dda(t_ctx *ctx, t_ray *ray)
 	}
 }
 
-static void check_hit(t_ctx *ctx, t_ray *ray)
+static void	check_hit(t_ctx *ctx, t_ray *ray)
 {
-	if (ctx->map.parsed_map[ray->map.y][ray->map.x] == '1')
+	if (ctx->map->data[ray->map.y][ray->map.x] == '1')
 	{
 		if (ray->side == 0)
 		{
 			if (ray->dir.x > 0)
-				ray->hit = RAY_SU;
+				ray->hit = RAY_WE;
 			else
-				ray->hit = RAY_NO;
+				ray->hit = RAY_EA;
 		}
 		else
 		{
 			if (ray->dir.y > 0)
-				ray->hit = RAY_EA;
+				ray->hit = RAY_SU;
 			else
-				ray->hit = RAY_WE;
+				ray->hit = RAY_NO;
 		}
 	}
 }

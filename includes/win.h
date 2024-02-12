@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/30 01:36:41 by lray              #+#    #+#             */
-/*   Updated: 2023/12/30 02:04:53 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/11 18:30:44 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "structures.h"
 
-void	win_init(t_win *win, t_win_params params);
+void	win_init(t_ctx *ctx);
 void	win_free(t_win *win);
 
 #endif

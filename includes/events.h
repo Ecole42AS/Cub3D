@@ -6,14 +6,14 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 20:47:37 by lray              #+#    #+#             */
-/*   Updated: 2024/02/03 13:57:08 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/11 20:14:51 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EVENTS_H
 # define EVENTS_H
 
-#include "ctx.h"
+# include "ctx.h"
 
 enum e_events
 {
