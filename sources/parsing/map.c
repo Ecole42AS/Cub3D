@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 12:17:10 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/11 23:47:51 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/12 01:22:28 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,6 @@ int	check_map_validity(t_ctx *ctx)
 					player_init(&ctx->player, (t_vec){pos.x + 0.5, pos.y + 0.5}, (t_vec){-1, 0}, (t_vec){0, 0.66});
 				else if (cell == 'W')
 					player_init(&ctx->player, (t_vec){pos.x + 0.5, pos.y + 0.5}, (t_vec){1, 0}, (t_vec){0, -0.66});
-
 			}
 		}
 	}

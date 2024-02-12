@@ -6,13 +6,13 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 22:49:34 by lray              #+#    #+#             */
-/*   Updated: 2024/02/11 23:20:23 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/12 00:08:08 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-void		ray_calculate_draw_points(t_ctx *ctx, t_ray *ray)
+void	ray_calculate_draw_points(t_ctx *ctx, t_ray *ray)
 {
 	if (ray->line_height == INT_MIN)
 	{
