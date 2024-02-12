@@ -21,6 +21,7 @@ int	parser(char *file_path, t_ctx *ctx)
 		return (0);
 	if (!parse_texture_paths(&ctx->textures_path, fd))
 	{
+		ft_putstr_fd("Error: texture syntax error", 2);
 		close(fd);
 		return (0);
 	}
