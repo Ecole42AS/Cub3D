@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 10:12:58 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/11 21:53:33 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/12 13:28:48 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	parser(char *file_path, t_ctx *ctx)
 		return (0);
 	if (!parse_texture_paths(&ctx->textures_path, fd))
 	{
-		ft_putstr_fd("Error: texture syntax error", 2);
+		ft_putstr_fd("Error: texture syntax error\n", 2);
 		close(fd);
 		return (0);
 	}
