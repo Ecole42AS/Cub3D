@@ -6,7 +6,7 @@
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 10:12:58 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/11 11:30:53 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/12 11:15:54 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,15 @@ int	parser(char *file_path, t_parsing_data *data)
 		return (1);
 	if (parse_texture_paths(data->texture, fd) == 1)
 	{
+		ft_putstr_fd("Error: texture syntax error", 2);
 		close(fd);
 		return (1);
 	}
-	parse_colors(fd, data->color);
+	if (parse_colors(fd, data->color))
+	{
+		ft_putstr_fd("Error: Invalid color format", 2);
+		return (1);
+	}
 	data->map->parsed_map = map_parsing(fd, file_path);
 	close(fd);
 	if (data->map == NULL)
