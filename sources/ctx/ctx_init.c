@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 23:51:50 by lray              #+#    #+#             */
-/*   Updated: 2024/02/11 18:23:19 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/13 13:07:32 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ int	ctx_init(t_ctx *ctx, int win_width, int win_height, char *win_name)
 	ctx->textures[4] = NULL;
 	ctx->color.rgb_floor = 0;
 	ctx->color.rgb_ceiling = 0;
+	ft_memset(&ctx->keys, 0, sizeof(t_keys));
 	return (1);
 }
 

@@ -14,10 +14,12 @@ SRCS	=	sources/parsing/parsing_utils.c 			\
 			sources/mlx_utils/get_keycode.c				\
 			sources/colors/clr_make_trgb.c				\
 			sources/colors/clr_get.c					\
-			sources/events/key_handler.c				\
+			sources/events/keypress_handler.c			\
+			sources/events/keyrelease_handler.c			\
+			sources/events/keys_handler.c				\
 			sources/events/close_handler.c				\
 			sources/ctx/ctx_init.c						\
-			sources/ctx/ctx_validation.c						\
+			sources/ctx/ctx_validation.c				\
 			sources/ctx/ctx_init_textures.c				\
 			sources/ctx/ctx_free.c						\
 			sources/win/win_init.c						\

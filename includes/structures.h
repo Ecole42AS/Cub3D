@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 16:07:57 by lray              #+#    #+#             */
-/*   Updated: 2024/02/11 20:16:26 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/13 13:05:05 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,16 @@ typedef struct s_texture
 	char	*ea_texture_path;
 }	t_texture;
 
+typedef struct s_keys
+{
+	int	w;
+	int	a;
+	int	s;
+	int	d;
+	int	left;
+	int	right;
+}	t_keys;
+
 typedef struct s_ctx
 {
 	void		*mlx;
@@ -105,13 +115,7 @@ typedef struct s_ctx
 	t_image		*textures[5];
 	t_texture	textures_path;
 	t_color		color;
+	t_keys		keys;
 }	t_ctx;
-
-typedef struct s_parsing_data
-{
-	t_color		*color;
-	t_texture	*texture;
-	t_map		*map;
-}	t_parsing_data;
 
 #endif
