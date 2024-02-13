@@ -3,6 +3,7 @@ SRCS	=	sources/parsing/parsing_utils.c 			\
 			sources/parsing/colors.c 					\
 			sources/parsing/map.c 						\
 			sources/parsing/parser.c					\
+			sources/parsing/check_map_validity.c		\
 			sources/main.c								\
 			sources/mlx_utils/put_pixel.c				\
 			sources/mlx_utils/get_pixel.c				\
