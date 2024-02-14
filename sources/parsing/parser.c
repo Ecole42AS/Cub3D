@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 10:12:58 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/12 15:17:30 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/14 15:37:44 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	parser(char *file_path, t_ctx *ctx)
 	parse_colors(fd, &ctx->color);
 	ctx->map->data = map_parsing(fd, file_path);
 	close(fd);
-	if (ctx->map == NULL)
+	if (ctx->map->data == NULL)
 		return (0);
 	return (1);
 }

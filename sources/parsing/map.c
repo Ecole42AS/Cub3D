@@ -6,11 +6,13 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 12:17:10 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/13 23:40:07 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/14 15:46:33 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
+
+static int	process_line(char **map, char *line, t_veci *map_size);
 
 char	**map_parsing(int fd, char *file_path)
 {
@@ -29,11 +31,8 @@ char	**map_parsing(int fd, char *file_path)
 		free(line);
 	while (line)
 	{
-		if (line[ft_strlen(line) - 1] == '\n')
-			line[ft_strlen(line) - 1] = '\0';
-		map[map_size->y] = line;
-		if ((int)ft_strlen(line) > map_size->x)
-			map_size->x = ft_strlen(line);
+		if (!process_line(map, line, map_size))
+			return (NULL);
 		line = get_next_line(fd);
 		map_size->y++;
 	}
@@ -87,5 +86,23 @@ int	is_map_closed(char **map)
 			}
 		}
 	}
+	return (1);
+}
+
+static int	process_line(char **map, char *line, t_veci *map_size)
+{
+	if (line[0] == '\n')
+	{
+		ft_putstr_fd("Error, map cannot have new line\n", 2);
+		free(line);
+		free(map_size);
+		free_map(map);
+		return (0);
+	}
+	if (line[ft_strlen(line) - 1] == '\n')
+		line[ft_strlen(line) - 1] = '\0';
+	map[map_size->y] = line;
+	if ((int)ft_strlen(line) > map_size->x)
+		map_size->x = ft_strlen(line);
 	return (1);
 }
