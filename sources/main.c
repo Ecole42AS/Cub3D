@@ -16,13 +16,17 @@
 static int	parse_and_validate(t_ctx *ctx, char *path);
 static int	game_init(t_ctx *ctx);
 static void	game_run(t_ctx *ctx);
+static void	show_usage(void);
 
 int	main(int ac, char **av)
 {
 	t_ctx	ctx;
 
 	if (ac != 2)
-		av[1] = "maps/test_map.cub";
+	{
+		show_usage();
+		return (1);
+	}
 	if (!ctx_init(&ctx, WIN_WIDTH, WIN_HEIGHT, WIN_NAME))
 	{
 		ctx_free(&ctx);
@@ -39,6 +43,7 @@ int	main(int ac, char **av)
 		return (1);
 	}
 	game_run(&ctx);
+	ctx_free(&ctx);
 	return (0);
 }
 
@@ -70,6 +75,11 @@ static void	game_run(t_ctx *ctx)
 	mlx_hook(ctx->win.win, 2, 1L << 0, keypress_handler, ctx);
 	mlx_hook(ctx->win.win, 3, 1L << 1, keyrelease_handler, ctx);
 	mlx_loop_hook(ctx->mlx, gameloop, ctx);
-	mlx_do_key_autorepeaton(ctx->mlx);
 	mlx_loop(ctx->mlx);
+}
+
+static void	show_usage(void)
+{
+	printf("Usage: ./cub3d [file_path]\n");
+	printf("file_path: Path to the map file to be used by the game.\n");
 }
