@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   key_handler.c                                      :+:      :+:    :+:   */
+/*   keys_handler.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/29 20:49:26 by lray              #+#    #+#             */
-/*   Updated: 2024/02/03 14:03:46 by lray             ###   ########.fr       */
+/*   Created: 2024/02/13 13:11:57 by lray              #+#    #+#             */
+/*   Updated: 2024/02/13 13:18:13 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	key_handler(int keycode, void *param)
+void	keys_handler(t_ctx *ctx)
 {
-	t_ctx	*ctx;
-
-	ctx = param;
-	if (keycode == KEY_ESC)
-	{
-		ctx_free(ctx);
-		exit (0);
-	}
-	else if (keycode == KEY_W || keycode == KEY_UP)
+	if (ctx->keys.w == 1)
 		go_front(ctx);
-	else if (keycode == KEY_S || keycode == KEY_DOWN)
-		go_back(ctx);
-	else if (keycode == KEY_A)
+	if (ctx->keys.a == 1)
 		go_left(ctx);
-	else if (keycode == KEY_D)
+	if (ctx->keys.s == 1)
+		go_back(ctx);
+	if (ctx->keys.d == 1)
 		go_right(ctx);
-	else if (keycode == KEY_LEFT)
+	if (ctx->keys.left)
 		rotate_left(ctx);
-	else if (keycode == KEY_RIGHT)
+	if (ctx->keys.right)
 		rotate_right(ctx);
-	return (0);
 }

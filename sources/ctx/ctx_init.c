@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 23:51:50 by lray              #+#    #+#             */
-/*   Updated: 2024/02/11 18:23:19 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/13 23:34:45 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,11 @@ int	ctx_init(t_ctx *ctx, int win_width, int win_height, char *win_name)
 	ctx->win.width = win_width;
 	ctx->win.height = win_height;
 	ctx->win.name = win_name;
-	ctx->textures_path.no_texture_path = NULL;
-	ctx->textures_path.so_texture_path = NULL;
-	ctx->textures_path.ea_texture_path = NULL;
-	ctx->textures_path.we_texture_path = NULL;
-	ctx->textures[0] = NULL;
-	ctx->textures[1] = NULL;
-	ctx->textures[2] = NULL;
-	ctx->textures[3] = NULL;
-	ctx->textures[4] = NULL;
+	ft_memset(&ctx->textures_path, 0, sizeof(ctx->textures_path));
+	ft_memset(ctx->textures, 0, sizeof(ctx->textures));
 	ctx->color.rgb_floor = 0;
 	ctx->color.rgb_ceiling = 0;
+	ft_memset(&ctx->keys, 0, sizeof(t_keys));
 	return (1);
 }
 

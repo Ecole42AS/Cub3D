@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 15:17:40 by lray              #+#    #+#             */
-/*   Updated: 2024/02/12 14:45:11 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/13 23:24:54 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,21 @@ static int	is_valide_new_y(t_ctx *ctx, double new_y)
 
 static int	is_wall(t_ctx *ctx, double new_x, double new_y)
 {
-	if (ctx->map->data[(int)(new_y)][(int)(new_x)] == '1')
+	int	upper_x;
+	int	lower_x;
+	int	upper_y;
+	int	lower_y;
+
+	upper_x = ceil(new_x);
+	lower_x = floor(new_x);
+	upper_y = ceil(new_y);
+	lower_y = floor(new_y);
+	if (ctx->map->data[lower_y][lower_x] == '1' ||
+		ctx->map->data[lower_y][upper_x] == '1' ||
+		ctx->map->data[upper_y][lower_x] == '1' ||
+		ctx->map->data[upper_y][upper_x] == '1')
+	{
 		return (1);
+	}
 	return (0);
 }

@@ -67,7 +67,8 @@ static int	game_init(t_ctx *ctx)
 static void	game_run(t_ctx *ctx)
 {
 	mlx_hook(ctx->win.win, ON_DESTROY, 0, close_handler, ctx);
-	mlx_hook(ctx->win.win, 2, 1L << 0, key_handler, ctx);
+	mlx_hook(ctx->win.win, 2, 1L << 0, keypress_handler, ctx);
+	mlx_hook(ctx->win.win, 3, 1L << 1, keyrelease_handler, ctx);
 	mlx_loop_hook(ctx->mlx, gameloop, ctx);
 	mlx_do_key_autorepeaton(ctx->mlx);
 	mlx_loop(ctx->mlx);
