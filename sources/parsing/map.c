@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
+/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 12:17:10 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/14 15:46:33 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/15 16:03:31 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	**map_parsing(int fd, char *file_path)
 	line = gnl_unempty(fd);
 	if (!line)
 		return (NULL);
-	map = ft_calloc(map_line_number * 2, sizeof(char *));
+	map = ft_calloc(map_line_number + 1, sizeof(char *));
 	if (!map)
 		free(line);
 	while (line)
@@ -67,6 +67,7 @@ int	is_map_closed(char **map)
 	char	c;
 
 	p.y = -1;
+	printf("%s\n", map[0]);
 	while (map[++p.y] != NULL)
 	{
 		p.x = -1;
