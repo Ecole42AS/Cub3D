@@ -6,13 +6,13 @@
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:21:50 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/12 15:17:41 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/15 14:04:14 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
 
-int	parse_and_set_texture(t_texture *texture, int fd, const char *prefix)
+int	parse_and_set_texture(t_texture *texture, int fd, const char *prefix) //t_ctx *ctx
 {
 	char	*line;
 	char	**split_result;
@@ -22,6 +22,8 @@ int	parse_and_set_texture(t_texture *texture, int fd, const char *prefix)
 		return (0);
 	split_result = ft_split(line, ' ');
 	free(line);
+	// if (!ft_strcmp(split_result[0], "F") || !ft_strcmp(split_result[0], "C"))
+		// parse_colors(fd, &ctx->color);
 	if (!split_result || ft_strcmp(split_result[0], prefix) || split_result[2])
 	{
 		free_split(split_result);
@@ -71,7 +73,7 @@ int	parse_texture_paths(t_texture *texture, int fd)
 	i = 0;
 	while (i < (int)(sizeof(prefixes) / sizeof(prefixes[0])))
 	{
-		if (!parse_and_set_texture(texture, fd, prefixes[i]) != 0)
+		if (!parse_and_set_texture(texture, fd, prefixes[i]))
 		{
 			line = get_next_line(fd);
 			while (line)

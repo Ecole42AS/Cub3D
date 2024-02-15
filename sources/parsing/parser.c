@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
+/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 10:12:58 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/14 15:37:44 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/15 11:16:49 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	parser(char *file_path, t_ctx *ctx)
 	fd = open_file(file_path);
 	if (fd == -1)
 		return (0);
-	if (!parse_texture_paths(&ctx->textures_path, fd))
+	if (!parse_texture_paths(&ctx->textures_path, fd))// ctx
 	{
 		close(fd);
 		return (0);

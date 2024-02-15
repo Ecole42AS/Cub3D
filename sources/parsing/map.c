@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
+/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 12:17:10 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/14 15:46:33 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/15 14:36:54 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ char	**map_parsing(int fd, char *file_path)
 	line = gnl_unempty(fd);
 	if (!line)
 		return (NULL);
-	map = ft_calloc(map_line_number * 2, sizeof(char *));
+	map = ft_calloc(map_line_number + 1, sizeof(char *)); //attention trouver un autre moyen que de mettre le *2 (le GNL alloue de la mémoire pour la ligne mais il faudrait avoir ici qqch comme cela ft_calloc(map_line_number + (longest_line * map line number), sizeof(char *)) pourtant le GNL malloc deja donc en enlvant le *2 cela devrait fonctionner
 	if (!map)
 		free(line);
 	while (line)
 	{
-		if (!process_line(map, line, map_size))
+		if (!process_line(map, line, map_size))//map_size->x est la plus grande ligne
 			return (NULL);
 		line = get_next_line(fd);
 		map_size->y++;
