@@ -6,7 +6,7 @@
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/14 12:17:10 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/15 16:03:31 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/16 14:55:58 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int	is_map_closed(char **map)
 	char	c;
 
 	p.y = -1;
-	printf("%s\n", map[0]);
 	while (map[++p.y] != NULL)
 	{
 		p.x = -1;
@@ -79,7 +78,8 @@ int	is_map_closed(char **map)
 				if (p.y == 0 || p.x == 0 || map[p.y][p.x + 1] == '\0' ||
 					map[p.y + 1] == NULL || map[p.y][p.x + 1] == ' ' ||
 					map[p.y + 1][p.x] == ' ' || map[p.y][p.x - 1] == ' ' ||
-					map[p.y - 1][p.x] == ' ')
+					map[p.y - 1][p.x] == ' ' || map[p.y + 1][p.x] == '\0' ||
+					map[p.y - 1][p.x] == '\0')
 				{
 					ft_putstr_fd("Error, map is not closed\n", 2);
 					return (0);
