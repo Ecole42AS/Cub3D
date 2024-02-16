@@ -6,7 +6,7 @@
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 10:12:58 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/15 15:54:27 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/16 13:35:38 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	parser(char *file_path, t_ctx *ctx)
 		close(fd);
 		return (0);
 	}
-	parse_colors(fd, &ctx->color);
 	ctx->map->data = map_parsing(fd, file_path);
 	close(fd);
 	if (ctx->map->data == NULL)

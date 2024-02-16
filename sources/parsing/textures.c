@@ -6,7 +6,7 @@
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:21:50 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/15 17:31:03 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/16 13:36:51 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,37 +23,40 @@ int	parse_and_set_texture(t_texture *texture, int fd, t_ctx *ctx)
 	printf("%s", line);
 	split_result = ft_split(line, ' ');
 	free(line);
-	if (!ft_strcmp(split_result[0], "F") || !ft_strcmp(split_result[0], "C"))
-		parse_colors(fd, &ctx->color);
 	if (!compare_split_result(split_result))
 		return (0);
-	texture_path_setter(texture, split_result[1], split_result[0]);
+	texture_path_setter(texture, split_result[1], split_result[0], &ctx->color);
 	free_split(split_result);
 	return (1);
 }
 
-void	texture_path_setter(t_texture *t, const char *path, const char *prefix)
+void	texture_path_setter(t_texture *t, char *split, const char *prefix,
+	t_color *color)
 {
 	if (!strcmp(prefix, "NO"))
 	{
-		t->no_texture_path = ft_strdup(path);
-		t->no_texture_path[ft_strlen(path) - 1] = '\0';
+		t->no_texture_path = ft_strdup(split);
+		t->no_texture_path[ft_strlen(split) - 1] = '\0';
 	}
 	else if (!strcmp(prefix, "SO"))
 	{
-		t->so_texture_path = ft_strdup(path);
-		t->so_texture_path[ft_strlen(path) - 1] = '\0';
+		t->so_texture_path = ft_strdup(split);
+		t->so_texture_path[ft_strlen(split) - 1] = '\0';
 	}
 	else if (!strcmp(prefix, "WE"))
 	{
-		t->we_texture_path = ft_strdup(path);
-		t->we_texture_path[ft_strlen(path) - 1] = '\0';
+		t->we_texture_path = ft_strdup(split);
+		t->we_texture_path[ft_strlen(split) - 1] = '\0';
 	}
 	else if (!strcmp(prefix, "EA"))
 	{
-		t->ea_texture_path = ft_strdup(path);
-		t->ea_texture_path[ft_strlen(path) - 1] = '\0';
+		t->ea_texture_path = ft_strdup(split);
+		t->ea_texture_path[ft_strlen(split) - 1] = '\0';
 	}
+	else if (ft_strcmp(prefix, "F") == 0)
+		color->rgb_floor = parse_color_string(split);
+	else if (ft_strcmp(prefix, "C") == 0)
+		color->rgb_ceiling = parse_color_string(split);
 }
 
 int	parse_texture_paths(t_texture *texture, int fd, t_ctx *ctx)
@@ -61,7 +64,7 @@ int	parse_texture_paths(t_texture *texture, int fd, t_ctx *ctx)
 	int	i;
 
 	i = -1;
-	while (++i < 4)
+	while (++i < 6)
 	{
 		if (!parse_and_set_texture(texture, fd, ctx))
 			return (0);

@@ -6,7 +6,7 @@
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 13:35:41 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/15 16:59:38 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/16 13:38:17 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ int		get_map_line_number(char *file_path);
 int		is_map_closed(char **map);
 int		check_map_validity(t_ctx *ctx);
 int		parser(char *file_path, t_ctx *ctx);
-void	texture_path_setter(t_texture *texture, const char *path, \
-	const char *prefix);
-int	compare_split_result(char **split_result);
+void	texture_path_setter(t_texture *t, char *split, const char *prefix,
+			t_color *color);
+int		compare_split_result(char **split_result);
+int		parse_color_string(char *str);
+int		extract_color_components(char *str, int *r, int *g, int *b);
 
 #endif
