@@ -6,7 +6,7 @@
 /*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 23:39:12 by lray              #+#    #+#             */
-/*   Updated: 2024/02/14 00:11:01 by lray             ###   ########.fr       */
+/*   Updated: 2024/02/16 18:04:09 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	check_map_validity(t_ctx *ctx)
 
 	player_count = 0;
 	pos.y = -1;
-	memset(&ctx->map->map_size, 0, sizeof(ctx->map->map_size));
+	ft_memset(&ctx->map->map_size, 0, sizeof(ctx->map->map_size));
 	while (ctx->map->data[++pos.y] != NULL)
 	{
 		ctx->map->map_size.y++;

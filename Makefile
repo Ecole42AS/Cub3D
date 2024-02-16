@@ -50,7 +50,7 @@ CC		=	gcc
 
 RM      =	rm -f
 
-CFLAGS	=	-Wall -Wextra -Werror -g -fsanitize=address,undefined
+CFLAGS	=	-Wall -Wextra -Werror
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Linux)

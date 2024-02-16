@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   textures.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lray <lray@student.42lausanne.ch >         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 09:21:50 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/16 13:36:51 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/16 18:14:39 by lray             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	parse_and_set_texture(t_texture *texture, int fd, t_ctx *ctx)
 	line = gnl_unempty(fd);
 	if (!line)
 		return (0);
-	printf("%s", line);
 	split_result = ft_split(line, ' ');
 	free(line);
 	if (!compare_split_result(split_result))
@@ -33,22 +32,22 @@ int	parse_and_set_texture(t_texture *texture, int fd, t_ctx *ctx)
 void	texture_path_setter(t_texture *t, char *split, const char *prefix,
 	t_color *color)
 {
-	if (!strcmp(prefix, "NO"))
+	if (!ft_strcmp(prefix, "NO"))
 	{
 		t->no_texture_path = ft_strdup(split);
 		t->no_texture_path[ft_strlen(split) - 1] = '\0';
 	}
-	else if (!strcmp(prefix, "SO"))
+	else if (!ft_strcmp(prefix, "SO"))
 	{
 		t->so_texture_path = ft_strdup(split);
 		t->so_texture_path[ft_strlen(split) - 1] = '\0';
 	}
-	else if (!strcmp(prefix, "WE"))
+	else if (!ft_strcmp(prefix, "WE"))
 	{
 		t->we_texture_path = ft_strdup(split);
 		t->we_texture_path[ft_strlen(split) - 1] = '\0';
 	}
-	else if (!strcmp(prefix, "EA"))
+	else if (!ft_strcmp(prefix, "EA"))
 	{
 		t->ea_texture_path = ft_strdup(split);
 		t->ea_texture_path[ft_strlen(split) - 1] = '\0';
