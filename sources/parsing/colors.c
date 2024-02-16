@@ -6,14 +6,11 @@
 /*   By: astutz <astutz@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:31:21 by astutz            #+#    #+#             */
-/*   Updated: 2024/02/15 16:14:34 by astutz           ###   ########.fr       */
+/*   Updated: 2024/02/16 13:32:10 by astutz           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cub3d.h"
-
-static int	parse_color_string(char *str);
-static int	extract_color_components(char *str, int *r, int *g, int *b);
 
 void	parse_colors(int fd, t_color *color)
 {
@@ -39,7 +36,7 @@ void	parse_colors(int fd, t_color *color)
 	}
 }
 
-static int	parse_color_string(char *str)
+int	parse_color_string(char *str)
 {
 	int	r;
 	int	g;
@@ -50,7 +47,7 @@ static int	parse_color_string(char *str)
 	return (0);
 }
 
-static int	extract_color_components(char *str, int *r, int *g, int *b)
+int	extract_color_components(char *str, int *r, int *g, int *b)
 {
 	char	**split;
 
